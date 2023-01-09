@@ -11,8 +11,8 @@ _This document describes our team social contract for this project_
 # Daily process
 
 - Morning standup started by yesterday's Taskmaster
-  New roles assigned (by yesterday’s Taskmaster)
-  Yesterday? Today? Obstacles? (by today’s Taskmaster)
+  - New roles assigned (by yesterday’s Taskmaster)
+  - Yesterday? Today? Obstacles? (by today’s Taskmaster)
 - Morning standup is deciding on tasks for the day, what to focus on, what blocking issues exist that are stopping others from progressing
 - Pair program on assigned tasks
 - Record issues that are non-blocking and discuss after lunch at re-group meeting
