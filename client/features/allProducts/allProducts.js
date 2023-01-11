@@ -26,7 +26,6 @@ const AllProducts = () => {
 	};
 
 	if (allProducts.products) {
-		console.log(allProducts);
 		return (
 			<div>
 				<Box

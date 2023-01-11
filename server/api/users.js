@@ -17,3 +17,18 @@ router.get("/", async (req, res, next) => {
 		next(err);
 	}
 });
+
+router.post("/", async (req, res, next) => {
+	try {
+		const user = {
+			first_name: req.body.first_name,
+			last_name: req.body.last_name,
+			email: req.body.email,
+			password: req.body.password,
+		};
+		const created_user = await User.create(user);
+		res.status(201).json(created_user);
+	} catch (err) {
+		next(err);
+	}
+});
