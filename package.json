@@ -45,6 +45,7 @@
     "axios-mock-adapter": "^1.21.2",
     "babel-loader": "^8.2.5",
     "chai": "^4.3.6",
+    "dotenv": "^16.0.3",
     "esm": "^3.2.25",
     "file-loader": "^6.2.0",
     "mocha": "^10.1.0",
