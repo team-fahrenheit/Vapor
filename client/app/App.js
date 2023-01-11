@@ -12,8 +12,10 @@ const App = () => {
         <Navbar />
         {/* <AppRoutes /> */}
         <AllProducts/>
+        <Footer />
       </div>
     </ThemeProvider>
+
   );
 };
 
