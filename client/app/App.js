@@ -5,16 +5,18 @@ import theme from "../features/MUI-Theme/MuiTheme";
 import { ThemeProvider } from "@mui/material/styles";
 import AllProducts from "../features/allProducts/allProducts";
 
-return (
-  <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <div>
-        <Navbar />
-        {/* <AppRoutes /> */}
-        <AllProducts />
-      </div>
-    </ThemeProvider>
-  </React.StrictMode>
-);
+const App = () => {
+	return (
+		<React.StrictMode>
+			<ThemeProvider theme={theme}>
+				<div>
+					<Navbar />
+					<AppRoutes />
+					<AllProducts />
+				</div>
+			</ThemeProvider>
+		</React.StrictMode>
+	);
+};
 
 export default App;
