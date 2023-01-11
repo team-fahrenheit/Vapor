@@ -7,6 +7,10 @@ import {
   Button,
   InputAdornment,
 } from "@mui/material";
+import iconTwitter from "../../../public/img/iconTwitter.png";
+import iconTictok from "../../../public/img/iconsTiktok.png";
+import iconInstagram from "../../../public/img/iconsInstagram.png";
+import iconFacebook from "../../../public/img/iconsFacebook.png";
 
 const Footer = () => {
   return (
@@ -53,18 +57,22 @@ const Footer = () => {
           <Link href="#">Privacy Policy</Link>
         </Box>
       </Box>
-      <Box id="footer-right-side">
+      <Box
+        id="footer-right-side"
+        sx={{
+          mr: 5,
+        }}
+      >
         <p>Stay Connected</p>
 
-        <FormControl>
+        <FormControl
+          sx={{
+            mb: 1,
+          }}
+        >
           <TextField
             required
             id="outlined-required"
-            label="Sign Up"
-            size="small"
-            sx={{
-              pr: 0,
-            }}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
@@ -77,7 +85,18 @@ const Footer = () => {
           ></TextField>
         </FormControl>
         <Box id="social-media-icons">
-          <img src="../../../public/img/icon-twitter.png" />
+          <a href="https://www.facebook.com/">
+            <img src={iconFacebook} alt="Black facebook logo" />
+          </a>
+          <a href="https://twitter.com/">
+            <img src={iconTwitter} alt="Black twitter logo" />
+          </a>
+          <a href="https://www.tiktok.com/en/">
+            <img src={iconTictok} alt="Black Tiktok logo" />
+          </a>
+          <a href="https://www.instagram.com/">
+            <img src={iconInstagram} alt="Black instagram logo" />
+          </a>
         </Box>
       </Box>
     </Box>
