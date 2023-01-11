@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import {
   Box,
   Link,
-  FormControl,
   TextField,
   Button,
   InputAdornment,
+  Typography,
 } from "@mui/material";
 import iconTwitter from "../../../public/img/iconTwitter.png";
 import iconTictok from "../../../public/img/iconsTiktok.png";
@@ -18,6 +18,7 @@ const Footer = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(email);
+    //would add to newsletter
   };
 
   return (
@@ -40,8 +41,8 @@ const Footer = () => {
           sx={{
             display: "flex",
             alignItems: "center",
-            ml: 2,
-            mt: 1,
+            // ml: 2,
+            // mt: 1,
           }}
         >
           <Box
@@ -53,7 +54,9 @@ const Footer = () => {
             alt="placeholder logo"
             src="https://www.adaptivewfs.com/wp-content/uploads/2020/07/logo-placeholder-image.png"
           />
-          <p>Vapor</p>
+          <Typography fontWeight="bold" fontSize="20px">
+            Vapor
+          </Typography>
         </Box>
 
         <Box id="footer-links" sx={{ display: "flex", gap: 3, m: 4 }}>
@@ -67,7 +70,7 @@ const Footer = () => {
       <Box
         id="footer-right-side"
         sx={{
-          mr: 5,
+          m: 0,
         }}
       >
         <p>Stay Connected</p>
@@ -75,6 +78,12 @@ const Footer = () => {
         <form onSubmit={handleSubmit}>
           <TextField
             required
+            sx={
+              {
+                //   p: 0,
+                //   m: 0,
+              }
+            }
             id="signupEmail"
             size="small"
             placeholder="Email"
@@ -84,7 +93,17 @@ const Footer = () => {
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
-                  <Button variant="outlined" edge="end" type="submit">
+                  <Button
+                    variant="outlined"
+                    edge="end"
+                    type="submit"
+                    sx={
+                      {
+                        //   p: "5px",
+                        //   m: 0,
+                      }
+                    }
+                  >
                     Sign Up
                   </Button>
                 </InputAdornment>
