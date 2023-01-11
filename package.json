@@ -24,6 +24,8 @@
     "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.4",
+    "@stripe/react-stripe-js": "^1.16.3",
+    "@stripe/stripe-js": "^1.46.0",
     "bcrypt": "^5.1.0",
     "bestbuy": "^2.4.1",
     "compression": "^1.7.4",
