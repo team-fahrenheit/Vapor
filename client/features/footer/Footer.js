@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Link,
@@ -13,6 +13,13 @@ import iconInstagram from "../../../public/img/iconsInstagram.png";
 import iconFacebook from "../../../public/img/iconsFacebook.png";
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(email);
+  };
+
   return (
     <Box
       sx={{
@@ -65,25 +72,27 @@ const Footer = () => {
       >
         <p>Stay Connected</p>
 
-        <FormControl
-          sx={{
-            mb: 1,
-          }}
-        >
+        <form onSubmit={handleSubmit}>
           <TextField
             required
-            id="outlined-required"
+            id="signupEmail"
+            size="small"
+            placeholder="Email"
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
-                  <Button variant="outlined" edge="end">
+                  <Button variant="outlined" edge="end" type="submit">
                     Sign Up
                   </Button>
                 </InputAdornment>
               ),
             }}
           ></TextField>
-        </FormControl>
+        </form>
+
         <Box id="social-media-icons">
           <a href="https://www.facebook.com/">
             <img src={iconFacebook} alt="Black facebook logo" />
