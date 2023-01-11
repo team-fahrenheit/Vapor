@@ -4,7 +4,6 @@ import AppRoutes from "./AppRoutes";
 import theme from "../features/MUI-Theme/MuiTheme";
 import { ThemeProvider } from "@mui/material/styles";
 import AllProducts from "../features/allProducts/allProducts";
-
 import Footer from "../features/footer/Footer";
 
 const App = () => {
@@ -15,6 +14,7 @@ const App = () => {
           <Navbar />
           <AppRoutes />
           <AllProducts />
+          <Footer />
         </div>
       </ThemeProvider>
     </React.StrictMode>
