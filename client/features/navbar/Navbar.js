@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import {
   Box,
   FormControl,
@@ -8,27 +7,24 @@ import {
   Menu,
   MenuItem,
   IconButton,
+  Link as LinkMui,
 } from "@mui/material";
-import { alpha } from "@mui/material/styles";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 const Navbar = () => {
   const [accountBtn, setAccountBtn] = useState(null);
   const open = Boolean(accountBtn);
-
-  const navigate = useNavigate();
-
   const handleOpen = (e) => {
     setAccountBtn(e.currentTarget);
+  };
+
+  const closeAccountBtn = () => {
+    setAccountBtn(null);
   };
 
   const handleClose = () => {
     evt.preventDefault();
     console.log("hey look at me search");
-  };
-
-  const closeAccountBtn = () => {
-    setAccountBtn(null);
   };
 
   return (
@@ -37,9 +33,8 @@ const Navbar = () => {
         sx={{
           mt: 1.5,
           p: 0.5,
-          backgroundColor: (theme) => alpha(theme.palette.primary.main, 0.1),
+          backgroundColor: "primary.main",
           borderRadius: "5px",
-          color: "primary.main",
           fontWeight: "medium",
           display: "flex",
           justifyContent: "space-between",
@@ -63,10 +58,18 @@ const Navbar = () => {
             alt="placeholder logo"
             src="https://www.adaptivewfs.com/wp-content/uploads/2020/07/logo-placeholder-image.png"
           />
-          <Link href="#">PC</Link>
-          <Link href="#">PS5</Link>
-          <Link href="#">Xbox One S</Link>
-          <Link href="#">Nintendo Switch</Link>
+          <LinkMui href="#" sx={{ color: "text.secondary" }}>
+            PC
+          </LinkMui>
+          <LinkMui href="#" sx={{ color: "text.secondary" }}>
+            PS5
+          </LinkMui>
+          <LinkMui href="#" sx={{ color: "text.secondary" }}>
+            Xbox One S
+          </LinkMui>
+          <LinkMui href="#" sx={{ color: "text.secondary" }}>
+            Nintendo Switch
+          </LinkMui>
         </Box>
 
         <Box
@@ -79,14 +82,18 @@ const Navbar = () => {
           <FormControl>
             <TextField
               required
-              id="outlined-required"
+              id="search-field"
               label="Search"
               size="small"
+              color="text"
             ></TextField>
           </FormControl>
 
           <Button
             id="account-button"
+            sx={{
+              color: "text.secondary",
+            }}
             aria-controls={open ? "account-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
@@ -110,7 +117,7 @@ const Navbar = () => {
           </Menu>
 
           <IconButton aria-label="shopping-cart-button">
-            <ShoppingCartIcon />
+            <ShoppingCartIcon style={{ color: "rgba(232,230,230,0.54)" }} />
           </IconButton>
         </Box>
       </Box>
