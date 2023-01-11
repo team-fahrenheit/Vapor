@@ -1,16 +1,21 @@
 import React from "react";
-
 import Navbar from "../features/navbar/Navbar";
 import AppRoutes from "./AppRoutes";
-import Footer from "../features/footer/Footer";
+import theme from "../features/MUI-Theme/MuiTheme";
+import { ThemeProvider } from "@mui/material/styles";
+import AllProducts from '../features/allProducts/allProducts';
 
 const App = () => {
   return (
-    <div>
-      <Navbar />
-      {/* <AppRoutes /> */}
-      <Footer />
-    </div>
+    <ThemeProvider theme={theme}>
+      <div>
+        <Navbar />
+        {/* <AppRoutes /> */}
+        <AllProducts/>
+        <Footer />
+      </div>
+    </ThemeProvider>
+
   );
 };
 
