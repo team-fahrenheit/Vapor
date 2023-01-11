@@ -1,5 +1,5 @@
 {
-  "name": "fs-app-template",
+  "name": "graceshopper",
   "version": "2.0.0",
   "description": "Some boilerplate code to get you started - get shakin'!",
   "main": "index.js",
@@ -25,6 +25,7 @@
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.4",
     "bcrypt": "^5.1.0",
+    "bestbuy": "^2.4.1",
     "compression": "^1.7.4",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
