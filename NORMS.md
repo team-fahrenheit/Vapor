@@ -46,7 +46,7 @@ _This document describes our team social contract for this project_
 
 - Take a walk or get some water
 - Talk constructively about actionable items (e.g. raise your hand instead of interrupting, let me learn and struggle until I ask you for help, etc.)
-- Bring in a 3rd party (e.g. fellow, instructor) to mediate if you feel too frustrate
+- Bring in a 3rd party (e.g. fellow, instructor) to mediate if you feel too frustrated
 - Be an adult, you know how you best handle tilt.
 
 # Summary
