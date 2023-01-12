@@ -13,6 +13,7 @@ import {
   Grid,
 } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { shadows } from "@mui/system";
 
 const AllProducts = () => {
   const dispatch = useDispatch();
@@ -23,7 +24,8 @@ const AllProducts = () => {
   }, [dispatch]);
 
   const handlePageChange = (event) => {
-    dispatch(fetchAllProducts(parseInt(event.target.innerText)));
+    console.log("im the change", event);
+    //dispatch(fetchAllProducts(parseInt(event.target.innerText)));
   };
 
   if (allProducts.products) {
@@ -38,10 +40,11 @@ const AllProducts = () => {
             gap: "20px",
             mr: "10px",
             ml: "10px",
+            mb: "8px",
           }}
         >
           {allProducts.products.map((product) => (
-            <Grid xs>
+            <Grid xs item key={product.sku}>
               <Card
                 variant="outlined"
                 sx={{
@@ -49,8 +52,8 @@ const AllProducts = () => {
                   height: 270,
                   backgroundColor: "background.paper",
                   borderColor: "secondary.main",
+                  boxShadow: 2,
                 }}
-                key={product.sku}
               >
                 <CardMedia
                   sx={{
@@ -74,7 +77,7 @@ const AllProducts = () => {
                       alignItems: "center",
                     }}
                   >
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" color="##6b6b6b">
                       {product.regularPrice}
                     </Typography>
                     <IconButton aria-label="shopping-cart-button">
@@ -89,6 +92,8 @@ const AllProducts = () => {
         <Pagination
           count={allProducts.totalPages}
           onChange={handlePageChange}
+          hidePrevButton
+          hideNextButton
         />
       </div>
     );
