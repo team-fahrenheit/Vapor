@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import {
   Box,
-  Link,
+  Link as LinkMui,
   TextField,
   Button,
   InputAdornment,
   Typography,
 } from "@mui/material";
+import { Link } from "react-router-dom";
 import iconTwitter from "../../../public/img/iconTwitter.png";
 import iconTictok from "../../../public/img/iconsTiktok.png";
 import iconInstagram from "../../../public/img/iconsInstagram.png";
 import iconFacebook from "../../../public/img/iconsFacebook.png";
+import { color } from "@mui/system";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -33,6 +35,7 @@ const Footer = () => {
         justifyContent: "space-between",
         alignItems: "center",
         mt: "auto",
+        color: "secondary.main",
       }}
     >
       <Box id="footer-left-side">
@@ -43,26 +46,38 @@ const Footer = () => {
             alignItems: "center",
           }}
         >
-          <Box
-            component="img"
-            sx={{
-              height: 80,
-              width: 80,
-            }}
-            alt="placeholder logo"
-            src="https://www.adaptivewfs.com/wp-content/uploads/2020/07/logo-placeholder-image.png"
-          />
+          <Link to="/">
+            <Box
+              component="img"
+              sx={{
+                height: 80,
+                width: 80,
+              }}
+              alt="placeholder logo"
+              src="https://www.adaptivewfs.com/wp-content/uploads/2020/07/logo-placeholder-image.png"
+            />
+          </Link>
           <Typography fontWeight="bold" fontSize="20px">
             Vapor
           </Typography>
         </Box>
 
         <Box id="footer-links" sx={{ display: "flex", gap: 3, m: 4 }}>
-          <Link href="#">FAQ</Link>
-          <Link href="#">Refund Policy</Link>
-          <Link href="#">Careers</Link>
-          <Link href="#">Feedback</Link>
-          <Link href="#">Privacy Policy</Link>
+          <LinkMui href="#" underline="hover" sx={{ color: "secondary.main" }}>
+            FAQ
+          </LinkMui>
+          <LinkMui href="#" underline="hover" sx={{ color: "secondary.main" }}>
+            Refund Policy
+          </LinkMui>
+          <LinkMui href="#" underline="hover" sx={{ color: "secondary.main" }}>
+            Careers
+          </LinkMui>
+          <LinkMui href="#" underline="hover" sx={{ color: "secondary.main" }}>
+            Feedback
+          </LinkMui>
+          <LinkMui href="#" underline="hover" sx={{ color: "secondary.main" }}>
+            Privacy Policy
+          </LinkMui>
         </Box>
       </Box>
       <Box
