@@ -24,8 +24,7 @@ const AllProducts = () => {
   }, [dispatch]);
 
   const handlePageChange = (event) => {
-    console.log("im the change", event);
-    //dispatch(fetchAllProducts(parseInt(event.target.innerText)));
+    dispatch(fetchAllProducts(parseInt(event.target.innerText)));
   };
 
   if (allProducts.products) {
