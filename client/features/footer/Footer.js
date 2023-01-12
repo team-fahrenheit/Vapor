@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import {
   Box,
-  Link,
+  Link as LinkMui,
   TextField,
   Button,
   InputAdornment,
   Typography,
 } from "@mui/material";
+import { Link } from "react-router-dom";
 import iconTwitter from "../../../public/img/iconTwitter.png";
 import iconTictok from "../../../public/img/iconsTiktok.png";
 import iconInstagram from "../../../public/img/iconsInstagram.png";
@@ -27,12 +28,13 @@ const Footer = () => {
         mt: 1.5,
         p: 0.5,
         backgroundColor: "#a4a4a4",
-        borderRadius: "6px",
         color: "primary.main",
         fontWeight: "medium",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
+        mt: "auto",
+        color: "secondary.main",
       }}
     >
       <Box id="footer-left-side">
@@ -41,30 +43,40 @@ const Footer = () => {
           sx={{
             display: "flex",
             alignItems: "center",
-            // ml: 2,
-            // mt: 1,
           }}
         >
-          <Box
-            component="img"
-            sx={{
-              height: 80,
-              width: 80,
-            }}
-            alt="placeholder logo"
-            src="https://www.adaptivewfs.com/wp-content/uploads/2020/07/logo-placeholder-image.png"
-          />
+          <Link to="/">
+            <Box
+              component="img"
+              sx={{
+                height: 80,
+                width: 80,
+              }}
+              alt="placeholder logo"
+              src="https://www.adaptivewfs.com/wp-content/uploads/2020/07/logo-placeholder-image.png"
+            />
+          </Link>
           <Typography fontWeight="bold" fontSize="20px">
             Vapor
           </Typography>
         </Box>
 
         <Box id="footer-links" sx={{ display: "flex", gap: 3, m: 4 }}>
-          <Link href="#">FAQ</Link>
-          <Link href="#">Refund Policy</Link>
-          <Link href="#">Careers</Link>
-          <Link href="#">Feedback</Link>
-          <Link href="#">Privacy Policy</Link>
+          <LinkMui href="#" underline="hover" sx={{ color: "secondary.main" }}>
+            FAQ
+          </LinkMui>
+          <LinkMui href="#" underline="hover" sx={{ color: "secondary.main" }}>
+            Refund Policy
+          </LinkMui>
+          <LinkMui href="#" underline="hover" sx={{ color: "secondary.main" }}>
+            Careers
+          </LinkMui>
+          <LinkMui href="#" underline="hover" sx={{ color: "secondary.main" }}>
+            Feedback
+          </LinkMui>
+          <LinkMui href="#" underline="hover" sx={{ color: "secondary.main" }}>
+            Privacy Policy
+          </LinkMui>
         </Box>
       </Box>
       <Box
@@ -78,12 +90,6 @@ const Footer = () => {
         <form onSubmit={handleSubmit}>
           <TextField
             required
-            sx={
-              {
-                //   p: 0,
-                //   m: 0,
-              }
-            }
             id="signupEmail"
             size="small"
             placeholder="Email"
@@ -93,17 +99,7 @@ const Footer = () => {
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
-                  <Button
-                    variant="outlined"
-                    edge="end"
-                    type="submit"
-                    sx={
-                      {
-                        //   p: "5px",
-                        //   m: 0,
-                      }
-                    }
-                  >
+                  <Button variant="outlined" edge="end" type="submit">
                     Sign Up
                   </Button>
                 </InputAdornment>

@@ -48,9 +48,6 @@ const AllProducts = () => {
             justifyContent: "center",
             mt: 2,
             gap: "20px",
-            mr: "10px",
-            ml: "10px",
-            mb: "8px",
           }}
         >
           {allProducts.products.map((product) => (
