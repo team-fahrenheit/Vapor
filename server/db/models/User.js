@@ -6,10 +6,10 @@ const bcrypt = require("bcrypt");
 const SALT_ROUNDS = 5;
 
 const User = db.define("user", {
-	firstname: {
+	firstName: {
 		type: Sequelize.STRING,
 	},
-	lastname: {
+	lastName: {
 		type: Sequelize.STRING,
 	},
 	email: {
