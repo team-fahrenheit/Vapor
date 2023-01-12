@@ -27,7 +27,6 @@ const Footer = () => {
         mt: 1.5,
         p: 0.5,
         backgroundColor: "#a4a4a4",
-        borderRadius: "6px",
         color: "primary.main",
         fontWeight: "medium",
         display: "flex",
