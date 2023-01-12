@@ -12,7 +12,6 @@ import iconTwitter from "../../../public/img/iconTwitter.png";
 import iconTictok from "../../../public/img/iconsTiktok.png";
 import iconInstagram from "../../../public/img/iconsInstagram.png";
 import iconFacebook from "../../../public/img/iconsFacebook.png";
-import { color } from "@mui/system";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
