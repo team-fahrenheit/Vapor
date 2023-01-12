@@ -12,29 +12,30 @@ import { me } from "./store";
  */
 
 const AppRoutes = () => {
-	const isLoggedIn = useSelector((state) => !!state.auth.me.id);
-	const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+  const dispatch = useDispatch();
 
-	useEffect(() => {
-		dispatch(me());
-	}, []);
+  useEffect(() => {
+    dispatch(me());
+  }, []);
 
-	return (
-		<div>
-			{isLoggedIn ? (
-				<Routes>
-					<Route path="/*" element={<Home />} />
-					<Route to="/home" element={<Home />} />
-				</Routes>
-			) : (
-				<Routes>
-					<Route path="/*" element={<AllProducts />} />
-					<Route path="/login" element={<Login />} />
-					<Route path="/signup" element={<SignUp />} />
-				</Routes>
-			)}
-		</div>
-	);
+  return (
+    <div>
+      {isLoggedIn ? (
+        <Routes>
+          <Route path="/*" element={<Home />} />
+          <Route to="/home" element={<Home />} />
+        </Routes>
+      ) : (
+        <Routes>
+          <Route path="/*" element={<AllProducts />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
+      )}
+    </div>
+  );
 };
 
 export default AppRoutes;
