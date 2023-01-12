@@ -49,15 +49,17 @@ const Navbar = () => {
             gap: 4,
           }}
         >
-          <Box
-            component="img"
-            sx={{
-              height: 60,
-              width: 60,
-            }}
-            alt="placeholder logo"
-            src="https://www.adaptivewfs.com/wp-content/uploads/2020/07/logo-placeholder-image.png"
-          />
+          <LinkMui href="/#">
+            <Box
+              component="img"
+              sx={{
+                height: 60,
+                width: 60,
+              }}
+              alt="placeholder logo"
+              src="https://www.adaptivewfs.com/wp-content/uploads/2020/07/logo-placeholder-image.png"
+            />
+          </LinkMui>
           <LinkMui href="#" sx={{ color: "text.secondary" }}>
             PC
           </LinkMui>
