@@ -6,6 +6,7 @@ import SignUp from "../features/auth/SignUp";
 import Home from "../features/home/Home";
 import AllProducts from "../features/allProducts/allProducts";
 import { me } from "./store";
+import { Cart } from "../features/cart/Cart";
 
 /**
  * COMPONENT
