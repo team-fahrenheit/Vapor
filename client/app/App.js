@@ -9,7 +9,7 @@ const App = () => {
   return (
     <React.StrictMode>
       <ThemeProvider theme={theme}>
-        <div>
+        <div className="app-container">
           <Navbar />
           <AppRoutes />
           <Footer />
