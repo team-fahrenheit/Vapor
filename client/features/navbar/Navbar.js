@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { logout } from "../../app/store";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import Login from "./Login";
 import {
 	Box,
 	FormControl,
@@ -15,8 +17,11 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 const Navbar = () => {
 	const dispatch = useDispatch();
+
 	const [accountBtn, setAccountBtn] = useState(null);
 	const open = Boolean(accountBtn);
+
+	const isLoggedIn = useSelector((state) => !!state.auth.me.id);
 
 	const handleOpen = (e) => {
 		setAccountBtn(e.currentTarget);
@@ -97,37 +102,42 @@ const Navbar = () => {
 							color="text"
 						></TextField>
 					</FormControl>
+					{isLoggedIn ? (
+						<Box>
+							<Button
+								id="account-button"
+								sx={{
+									color: "text.secondary",
+								}}
+								aria-controls={open ? "account-menu" : undefined}
+								aria-haspopup="true"
+								aria-expanded={open ? "true" : undefined}
+								onClick={handleOpen}
+							>
+								Account
+							</Button>
+							<Menu
+								id="account-menu"
+								anchorEl={accountBtn}
+								open={open}
+								onClose={closeAccountBtn}
+								MenuListProps={{
+									"aria-labelledby": "account-button",
+								}}
+							>
+								<MenuItem onClick={closeAccountBtn}>My Account</MenuItem>
+								<MenuItem onClick={closeAccountBtn}>My Wishlist</MenuItem>
+								<MenuItem onClick={closeAccountBtn}>Settings</MenuItem>
+								<MenuItem onClick={handleLogout}>Logout</MenuItem>
+							</Menu>
 
-					<Button
-						id="account-button"
-						sx={{
-							color: "text.secondary",
-						}}
-						aria-controls={open ? "account-menu" : undefined}
-						aria-haspopup="true"
-						aria-expanded={open ? "true" : undefined}
-						onClick={handleOpen}
-					>
-						Account
-					</Button>
-					<Menu
-						id="account-menu"
-						anchorEl={accountBtn}
-						open={open}
-						onClose={closeAccountBtn}
-						MenuListProps={{
-							"aria-labelledby": "account-button",
-						}}
-					>
-						<MenuItem onClick={closeAccountBtn}>My Account</MenuItem>
-						<MenuItem onClick={closeAccountBtn}>My Wishlist</MenuItem>
-						<MenuItem onClick={closeAccountBtn}>Settings</MenuItem>
-						<MenuItem onClick={handleLogout}>Logout</MenuItem>
-					</Menu>
-
-					<IconButton aria-label="shopping-cart-button">
-						<ShoppingCartIcon style={{ color: "rgba(232,230,230,0.54)" }} />
-					</IconButton>
+							<IconButton aria-label="shopping-cart-button">
+								<ShoppingCartIcon style={{ color: "rgba(232,230,230,0.54)" }} />
+							</IconButton>
+						</Box>
+					) : (
+						<Login />
+					)}
 				</Box>
 			</Box>
 		</div>
