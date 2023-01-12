@@ -116,9 +116,11 @@ const Navbar = () => {
             <MenuItem onClick={closeAccountBtn}>Logout</MenuItem>
           </Menu>
 
-          <IconButton aria-label="shopping-cart-button">
-            <ShoppingCartIcon style={{ color: "rgba(232,230,230,0.54)" }} />
-          </IconButton>
+          <LinkMui href="/cart">
+            <IconButton aria-label="shopping-cart-button">
+              <ShoppingCartIcon style={{ color: "rgba(232,230,230,0.54)" }} />
+            </IconButton>
+          </LinkMui>
         </Box>
       </Box>
     </div>

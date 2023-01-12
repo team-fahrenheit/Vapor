@@ -6,17 +6,15 @@ import { ThemeProvider } from "@mui/material/styles";
 import AllProducts from "../features/allProducts/allProducts";
 
 const App = () => {
-	return (
-		<React.StrictMode>
-			<ThemeProvider theme={theme}>
-				<div>
-					<Navbar />
-					<AppRoutes />
-					<AllProducts />
-				</div>
-			</ThemeProvider>
-		</React.StrictMode>
-	);
+  return (
+    <React.StrictMode>
+      <ThemeProvider theme={theme}>
+        <Navbar />
+        <AppRoutes />
+        <AllProducts />
+      </ThemeProvider>
+    </React.StrictMode>
+  );
 };
 
 export default App;
