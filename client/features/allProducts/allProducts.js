@@ -11,8 +11,11 @@ import {
   Typography,
   Pagination,
   Grid,
+  PaginationItem,
 } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { shadows } from "@mui/system";
 
 const AllProducts = () => {
@@ -25,6 +28,14 @@ const AllProducts = () => {
 
   const handlePageChange = (event) => {
     dispatch(fetchAllProducts(parseInt(event.target.innerText)));
+  };
+
+  const handleNext = () => {
+    dispatch(fetchAllProducts(allProducts.currentPage + 1));
+  };
+
+  const handlePrevious = () => {
+    dispatch(fetchAllProducts(allProducts.currentPage - 1));
   };
 
   if (allProducts.products) {
@@ -91,8 +102,21 @@ const AllProducts = () => {
         <Pagination
           count={allProducts.totalPages}
           onChange={handlePageChange}
-          hidePrevButton
-          hideNextButton
+          renderItem={(item) => (
+            <PaginationItem
+              components={{
+                next: () => (
+                  <ArrowForwardIcon onClick={handleNext}>Next</ArrowForwardIcon>
+                ),
+                previous: () => (
+                  <ArrowBackIcon onClick={handlePrevious}>
+                    Previous
+                  </ArrowBackIcon>
+                ),
+              }}
+              {...item}
+            />
+          )}
         />
       </div>
     );
