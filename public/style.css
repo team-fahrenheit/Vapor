@@ -1,3 +1,7 @@
+* {
+  margin: 0;
+}
+
 body {
   font-family: sans-serif;
   background-color: #ebebeb;
@@ -19,4 +23,15 @@ nav a {
 form div {
   margin: 1em;
   display: inline-block;
+}
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  margin: 0;
+}
+
+.footer {
+  margin-top: auto;
 }
