@@ -33,6 +33,7 @@ const Footer = () => {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
+        mt: "auto",
       }}
     >
       <Box id="footer-left-side">
@@ -41,8 +42,6 @@ const Footer = () => {
           sx={{
             display: "flex",
             alignItems: "center",
-            // ml: 2,
-            // mt: 1,
           }}
         >
           <Box
@@ -78,12 +77,6 @@ const Footer = () => {
         <form onSubmit={handleSubmit}>
           <TextField
             required
-            sx={
-              {
-                //   p: 0,
-                //   m: 0,
-              }
-            }
             id="signupEmail"
             size="small"
             placeholder="Email"
@@ -93,17 +86,7 @@ const Footer = () => {
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
-                  <Button
-                    variant="outlined"
-                    edge="end"
-                    type="submit"
-                    sx={
-                      {
-                        //   p: "5px",
-                        //   m: 0,
-                      }
-                    }
-                  >
+                  <Button variant="outlined" edge="end" type="submit">
                     Sign Up
                   </Button>
                 </InputAdornment>
