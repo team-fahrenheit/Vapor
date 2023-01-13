@@ -44,7 +44,8 @@ const AllProducts = () => {
           container
           sx={{
             justifyContent: "center",
-            mt: 2,
+            mt: 3,
+            mb: 3,
             gap: "20px",
           }}
         >
