@@ -6,7 +6,6 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { getSearch } from "../navbar/SearchBarSlice";
 import RecipeReviewCard from "./cards";
-import { v4 as uuidv4 } from "uuid";
 
 const AllProducts = () => {
   const dispatch = useDispatch();
@@ -50,7 +49,7 @@ const AllProducts = () => {
           }}
         >
           {allProducts.products.map((product) => (
-            <RecipeReviewCard key={uuidv4()} product={product} />
+            <RecipeReviewCard key={product.sku} product={product} />
           ))}
         </Grid>
 
