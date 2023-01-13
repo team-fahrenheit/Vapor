@@ -44,12 +44,13 @@ const AllProducts = () => {
           container
           sx={{
             justifyContent: "center",
-            mt: 2,
+            mt: 3,
+            mb: 3,
             gap: "20px",
           }}
         >
           {allProducts.products.map((product) => (
-            <RecipeReviewCard product={product} />
+            <RecipeReviewCard key={product.sku} product={product} />
           ))}
         </Grid>
 
