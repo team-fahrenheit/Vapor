@@ -69,3 +69,51 @@ export default function RecipeReviewCard(props) {
     </Card>
   );
 }
+
+{
+  /* <Grid xs item key={product.sku}>
+               <Card
+                variant="outlined"
+                sx={{
+                  width: 190,
+                  height: 270,
+                  backgroundColor: "background.paper",
+                  borderColor: "secondary.main",
+                  boxShadow: 2,
+                }}
+              >
+                <CardMedia
+                  sx={{
+                    width: 150,
+                    height: 150,
+                    margin: "auto",
+                    marginTop: 1,
+                    borderRadius: 3,
+                  }}
+                  image={product.image}
+                  title={product.name}
+                />
+                <CardContent>
+                  <Typography variant="body2" sx={{ textAlign: "center" }}>
+                    {product.albumTitle}
+                  </Typography>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Typography variant="body2" color="##6b6b6b">
+                      {product.regularPrice}
+                    </Typography>
+                    <IconButton aria-label="shopping-cart-button">
+                      <ShoppingCartIcon style={{ color: "#ff6700" }} />
+                    </IconButton>
+                    <button onClick={console.log(product)}>expand</button>
+                  </Box>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))} */
+}
