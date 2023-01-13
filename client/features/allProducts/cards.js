@@ -76,7 +76,9 @@ export default function RecipeReviewCard(props) {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography>
-            {props.product.longDescriptionHtml.split("<br>").shift()}
+            {props.product.longDescriptionHtml
+              ? props.product.longDescriptionHtml.split("<br>").shift()
+              : null}
           </Typography>
 
           {props.product.details
