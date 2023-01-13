@@ -17,6 +17,9 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { getSearch } from "../navbar/SearchBarSlice";
 
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import RecipeReviewCard from "./cards";
+
 const AllProducts = () => {
   const dispatch = useDispatch();
   const allProducts = useSelector(selectProducts);
@@ -48,6 +51,7 @@ const AllProducts = () => {
   };
 
   if (allProducts.products) {
+    //console.log(allProducts);
     return (
       <div>
         <Grid
@@ -59,8 +63,10 @@ const AllProducts = () => {
           }}
         >
           {allProducts.products.map((product) => (
-            <Grid xs item key={product.sku}>
-              <Card
+            <RecipeReviewCard product={product} />
+          ))}
+          {/* <Grid xs item key={product.sku}>
+               <Card
                 variant="outlined"
                 sx={{
                   width: 190,
@@ -98,11 +104,12 @@ const AllProducts = () => {
                     <IconButton aria-label="shopping-cart-button">
                       <ShoppingCartIcon style={{ color: "#ff6700" }} />
                     </IconButton>
+                    <button onClick={console.log(product)}>expand</button>
                   </Box>
                 </CardContent>
               </Card>
             </Grid>
-          ))}
+          ))} */}
         </Grid>
         <Pagination
           count={allProducts.totalPages}
