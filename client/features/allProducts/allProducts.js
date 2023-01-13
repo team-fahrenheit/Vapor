@@ -24,15 +24,17 @@ const AllProducts = () => {
 
   useEffect(() => {
     dispatch(fetchAllProducts());
-  }, [dispatch]);
+  }, []);
 
   const pageChange = (pageNumber) => {
     dispatch(fetchAllProducts({ search: currentSearch, page: pageNumber }));
   };
 
   const handleClickPageNumber = (event) => {
-    const pageNumber = parseInt(event.target.innerText);
-    pageChange(pageNumber);
+    if (event.target.innerText) {
+      const pageNumber = parseInt(event.target.innerText);
+      pageChange(pageNumber);
+    }
   };
 
   const handleNextPage = () => {
