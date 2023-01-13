@@ -27,7 +27,6 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function RecipeReviewCard(props) {
-  console.log(props);
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -35,9 +34,16 @@ export default function RecipeReviewCard(props) {
   };
 
   return (
-    <Card sx={{ maxWidth: 300, minWidth: 300 }}>
+    <Card sx={{ maxWidth: 300, minWidth: 300, height: "100%" }}>
       <CardHeader title={`${props.product.albumTitle}`} />
-      <Typography>{props.product.platform}</Typography>
+      <Typography
+        sx={{
+          textAlign: "right",
+          mr: "20px",
+        }}
+      >
+        {props.product.platform}
+      </Typography>
       <CardMedia
         component="img"
         height="194"
@@ -45,13 +51,16 @@ export default function RecipeReviewCard(props) {
         alt={`${props.product.albumTitle} game cover`}
       />
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="text.main">
           {`$${props.product.regularPrice}`}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="wishlist-button">
           <FavoriteIcon />
+        </IconButton>
+        <IconButton aria-label="shopping-cart-button">
+          <ShoppingCartIcon style={{ color: "#ff6700" }} />
         </IconButton>
 
         <ExpandMore
@@ -67,10 +76,7 @@ export default function RecipeReviewCard(props) {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography>
-            {/* {props.product.features.map((line) => {
-              return Object.values(line) + "\n";
-            })} */}
-            {props.product.longDescription}
+            {props.product.longDescriptionHtml.split("<br>").shift()}
           </Typography>
 
           {props.product.details
@@ -81,65 +87,18 @@ export default function RecipeReviewCard(props) {
             })
             .map((item) => {
               return (
-                <Typography key={uuidv4()}>
+                <Typography
+                  key={uuidv4()}
+                  sx={{
+                    mt: 1,
+                  }}
+                >
                   {item.name + ": " + item.value + "\n"}
                 </Typography>
               );
             })}
-
-          <IconButton aria-label="shopping-cart-button">
-            <ShoppingCartIcon style={{ color: "#ff6700" }} />
-          </IconButton>
         </CardContent>
       </Collapse>
     </Card>
   );
-}
-
-{
-  /* <Grid xs item key={product.sku}>
-               <Card
-                variant="outlined"
-                sx={{
-                  width: 190,
-                  height: 270,
-                  backgroundColor: "background.paper",
-                  borderColor: "secondary.main",
-                  boxShadow: 2,
-                }}
-              >
-                <CardMedia
-                  sx={{
-                    width: 150,
-                    height: 150,
-                    margin: "auto",
-                    marginTop: 1,
-                    borderRadius: 3,
-                  }}
-                  image={product.image}
-                  title={product.name}
-                />
-                <CardContent>
-                  <Typography variant="body2" sx={{ textAlign: "center" }}>
-                    {product.albumTitle}
-                  </Typography>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Typography variant="body2" color="##6b6b6b">
-                      {product.regularPrice}
-                    </Typography>
-                    <IconButton aria-label="shopping-cart-button">
-                      <ShoppingCartIcon style={{ color: "#ff6700" }} />
-                    </IconButton>
-                    <button onClick={console.log(product)}>expand</button>
-                  </Box>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))} */
 }
