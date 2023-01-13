@@ -1,16 +1,19 @@
 import * as React from "react";
 import { styled } from "@mui/material/styles";
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-import Collapse from "@mui/material/Collapse";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
+import {
+  Card,
+  CardHeader,
+  CardMedia,
+  CardContent,
+  CardActions,
+  Collapse,
+  IconButton,
+  Typography,
+} from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { v4 as uuidv4 } from "uuid";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -32,21 +35,22 @@ export default function RecipeReviewCard(props) {
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardHeader title={`${props.product.name}`} />
+    <Card sx={{ maxWidth: 300, minWidth: 300 }}>
+      <CardHeader title={`${props.product.albumTitle}`} />
+      <Typography>{props.product.platform}</Typography>
       <CardMedia
         component="img"
         height="194"
-        image={`${props.product.image}`}
+        image={`${props.product.largeFrontImage}`}
         alt={`${props.product.albumTitle} game cover`}
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          {`${props.product.regularPrice}`}
+          {`$${props.product.regularPrice}`}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <IconButton aria-label="wishlist-button">
           <FavoriteIcon />
         </IconButton>
 
@@ -59,8 +63,30 @@ export default function RecipeReviewCard(props) {
           <ExpandMoreIcon />
         </ExpandMore>
       </CardActions>
+
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
+          <Typography>
+            {/* {props.product.features.map((line) => {
+              return Object.values(line) + "\n";
+            })} */}
+            {props.product.longDescription}
+          </Typography>
+
+          {props.product.details
+            .filter((item) => {
+              return (
+                item["name"] === "ESRB Rating" || item["name"] === "Multiplayer"
+              );
+            })
+            .map((item) => {
+              return (
+                <Typography key={uuidv4()}>
+                  {item.name + ": " + item.value + "\n"}
+                </Typography>
+              );
+            })}
+
           <IconButton aria-label="shopping-cart-button">
             <ShoppingCartIcon style={{ color: "#ff6700" }} />
           </IconButton>
