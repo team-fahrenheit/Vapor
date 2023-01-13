@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 import { selectProducts, fetchAllProducts } from "./allProductsSlice";
 import {
   Box,
@@ -16,30 +15,37 @@ import {
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { shadows } from "@mui/system";
+import { getSearch } from "../navbar/SearchBarSlice";
 
 const AllProducts = () => {
   const dispatch = useDispatch();
   const allProducts = useSelector(selectProducts);
+  const currentSearch = useSelector(getSearch);
 
   useEffect(() => {
     dispatch(fetchAllProducts());
   }, [dispatch]);
 
-  const handlePageChange = (event) => {
-    dispatch(fetchAllProducts(parseInt(event.target.innerText)));
+  const pageChange = (pageNumber) => {
+    dispatch(fetchAllProducts({ search: currentSearch, page: pageNumber }));
   };
 
-  const handleNext = () => {
-    dispatch(fetchAllProducts(allProducts.currentPage + 1));
+  const handleClickPageNumber = (event) => {
+    const pageNumber = parseInt(event.target.innerText);
+    pageChange(pageNumber);
   };
 
-  const handlePrevious = () => {
-    dispatch(fetchAllProducts(allProducts.currentPage - 1));
+  const handleNextPage = () => {
+    const pageNumber = allProducts.currentPage + 1;
+    pageChange(pageNumber);
+  };
+
+  const handlePreviousPage = () => {
+    const pageNumber = allProducts.currentPage - 1;
+    pageChange(pageNumber);
   };
 
   if (allProducts.products) {
-    console.log(allProducts);
     return (
       <div>
         <Grid
@@ -101,15 +107,17 @@ const AllProducts = () => {
         </Grid>
         <Pagination
           count={allProducts.totalPages}
-          onChange={handlePageChange}
+          onChange={handleClickPageNumber}
           renderItem={(item) => (
             <PaginationItem
               components={{
                 next: () => (
-                  <ArrowForwardIcon onClick={handleNext}>Next</ArrowForwardIcon>
+                  <ArrowForwardIcon onClick={handleNextPage}>
+                    Next
+                  </ArrowForwardIcon>
                 ),
                 previous: () => (
-                  <ArrowBackIcon onClick={handlePrevious}>
+                  <ArrowBackIcon onClick={handlePreviousPage}>
                     Previous
                   </ArrowBackIcon>
                 ),
