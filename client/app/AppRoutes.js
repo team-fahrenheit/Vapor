@@ -6,7 +6,8 @@ import SignUp from "../features/auth/SignUp";
 import Home from "../features/home/Home";
 import AllProducts from "../features/allProducts/allProducts";
 import { me } from "./store";
-import Checkout from "../features/cart/Cart.js";
+import CartPreview from "../features/cart/CartPreview";
+import Checkout from "../features/cart/Checkout";
 
 /**
  * COMPONENT
@@ -32,7 +33,8 @@ const AppRoutes = () => {
           <Route path="/*" element={<AllProducts />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/cart" element={<Checkout />} />
+          <Route path="/cart" element={<CartPreview />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       )}
     </div>
