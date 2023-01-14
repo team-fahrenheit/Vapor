@@ -12,7 +12,8 @@ import {
   IconButton,
   Link as LinkMui,
 } from "@mui/material";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+
+import CartPreview from "../cart/CartPreview";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -127,11 +128,8 @@ const Navbar = () => {
           ) : (
             <LogInSignUp />
           )}
-          <LinkMui href="/cart">
-            <IconButton aria-label="shopping-cart-button">
-              <ShoppingCartIcon style={{ color: "rgba(232,230,230,0.54)" }} />
-            </IconButton>
-          </LinkMui>
+
+          <CartPreview />
         </Box>
       </Box>
     </div>
