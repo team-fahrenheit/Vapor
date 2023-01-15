@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -47,13 +48,15 @@ function getStepContent(step) {
 const theme = createTheme();
 
 export default function Checkout() {
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = useState(0);
 
-  const handleNext = () => {
+  const handleNext = (evt) => {
+    evt.preventDefault();
     setActiveStep(activeStep + 1);
   };
 
-  const handleBack = () => {
+  const handleBack = (evt) => {
+    evt.preventDefault();
     setActiveStep(activeStep - 1);
   };
 
@@ -91,16 +94,16 @@ export default function Checkout() {
             ))}
           </Stepper>
           {activeStep === steps.length ? (
-            <React.Fragment>
+            <>
               <Typography variant="h5" gutterBottom>
-                Thank you for your order.
+                Thank you for your order!
               </Typography>
               <Typography variant="subtitle1">
                 Your order number is #2001539. We have emailed your order
-                confirmation, and will send you an update when your order has
-                shipped.
+                confirmation, and your games will be available for download
+                shortly.
               </Typography>
-            </React.Fragment>
+            </>
           ) : (
             <React.Fragment>
               {getStepContent(activeStep)}
