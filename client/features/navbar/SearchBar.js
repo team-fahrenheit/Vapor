@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { FormControl, TextField } from "@mui/material";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchAllProducts } from "../allProducts/allProductsSlice";
-import { updateSearch, getSearch } from "./SearchBarSlice";
+import { updateSearch } from "./SearchBarSlice";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
