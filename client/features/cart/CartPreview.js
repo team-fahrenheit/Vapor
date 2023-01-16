@@ -65,7 +65,7 @@ function CartPreview() {
           </List>
         </Box>
         <LinkMui href="/checkout">
-          <Button textAlign="center">Pay Now</Button>
+          <Button textAlign="center">Pay Now $50.00</Button>
         </LinkMui>
       </Drawer>
     </>

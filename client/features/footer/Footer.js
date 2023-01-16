@@ -12,6 +12,7 @@ import iconTwitter from "../../../public/img/iconTwitter.png";
 import iconTictok from "../../../public/img/iconsTiktok.png";
 import iconInstagram from "../../../public/img/iconsInstagram.png";
 import iconFacebook from "../../../public/img/iconsFacebook.png";
+import vaporlogo from "../../../public/img/vaporlogo.png";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -52,11 +53,11 @@ const Footer = () => {
                 height: 80,
                 width: 80,
               }}
-              alt="placeholder logo"
-              src="https://www.adaptivewfs.com/wp-content/uploads/2020/07/logo-placeholder-image.png"
+              alt="Vapor logo"
+              src={vaporlogo}
             />
           </Link>
-          <Typography fontWeight="bold" fontSize="20px">
+          <Typography fontWeight="bold" fontSize="30px">
             Vapor
           </Typography>
         </Box>
