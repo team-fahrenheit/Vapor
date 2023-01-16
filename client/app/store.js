@@ -16,4 +16,3 @@ const store = configureStore({
 export default store;
 export * from "../features/auth/authSlice";
 export * from "../features/navbar/SearchBarSlice";
-export * from "../features/allProducts/allProductsSlice";
