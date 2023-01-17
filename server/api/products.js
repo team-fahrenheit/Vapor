@@ -80,7 +80,7 @@ const querify = (str) => {
 };
 
 const randomKey = () => {
-  const random = Math.random() * arguments.length;
+  const random = Math.random();
   if (random < 0.333) return key1;
   else if (random < 0.6667) return key2;
   else return key3;
