@@ -10,6 +10,7 @@ import {
 import { getSearch } from "../navbar/SearchBarSlice";
 
 import RecipeReviewCard from "./cards";
+import BackToTopButton from "../backToTop/BackToTopButton";
 
 //Attributes necessary for show: class,sku,regularPrice,longDescriptionHtml,image,albumTitle,platform,largeFrontImage,details
 const AllProducts = () => {
@@ -53,6 +54,7 @@ const AllProducts = () => {
         onChange={handleClickPageNumber}
         renderItem={(item) => <PaginationItem {...item} />}
       />
+      <BackToTopButton />
     </div>
   ) : (
     <h1> Loading... </h1>

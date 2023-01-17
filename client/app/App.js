@@ -4,7 +4,6 @@ import AppRoutes from "./AppRoutes";
 import theme from "../features/MUI-Theme/MuiTheme";
 import { ThemeProvider } from "@mui/material/styles";
 import Footer from "../features/footer/Footer";
-import CartPreview from "../features/cart/CartPreview";
 
 const App = () => {
   return (

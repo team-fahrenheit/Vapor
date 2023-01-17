@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { v4 as uuidv4 } from "uuid";
 
 const ExpandMore = styled((props) => {
@@ -57,10 +57,10 @@ export default function RecipeReviewCard(props) {
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="wishlist-button">
-          <FavoriteIcon />
+          <FavoriteIcon style={{ color: "#5c5c5c" }} />
         </IconButton>
         <IconButton aria-label="shopping-cart-button">
-          <ShoppingCartIcon style={{ color: "#ff6700" }} />
+          <AddShoppingCartIcon style={{ color: "#3a6ea5" }} />
         </IconButton>
 
         <ExpandMore
@@ -72,7 +72,6 @@ export default function RecipeReviewCard(props) {
           <ExpandMoreIcon />
         </ExpandMore>
       </CardActions>
-
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography>
