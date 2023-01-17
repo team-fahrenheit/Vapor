@@ -4,16 +4,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import LogInSignUp from "./LogInSignUp";
 import SearchBar from "./SearchBar";
-import {
-  Box,
-  Button,
-  Menu,
-  MenuItem,
-  IconButton,
-  Link as LinkMui,
-} from "@mui/material";
-
+import { Box, Button, Menu, MenuItem, Link as LinkMui } from "@mui/material";
 import CartPreview from "../cart/CartPreview";
+import vaporlogo from "../../../public/img/vaporlogo.png";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -42,7 +35,7 @@ const Navbar = () => {
   };
 
   return (
-    <div>
+    <div id="back-to-top-anchor">
       <Box
         sx={{
           mt: 1.5,
@@ -70,8 +63,8 @@ const Navbar = () => {
                 height: 60,
                 width: 60,
               }}
-              alt="placeholder logo"
-              src="https://www.adaptivewfs.com/wp-content/uploads/2020/07/logo-placeholder-image.png"
+              alt="Vapor Logo"
+              src={vaporlogo}
             />
           </Link>
           <LinkMui href="#" sx={{ color: "text.secondary" }}>
