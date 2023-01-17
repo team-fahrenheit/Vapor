@@ -4,7 +4,7 @@
   "description": "FS2211 - A digital games storefront by Jason Potvin, Justin Wooley, and Eddie Fahrenheit.",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack-cli",
     "build:dev": "npm run build -- --watch --mode=development",
     "seed": "node script/seed.js",
     "start": "cross-env JWT=shh node server",
