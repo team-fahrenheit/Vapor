@@ -13,7 +13,7 @@ async function seed() {
   await db.sync({ force: true }); // clears db and matches models to tables
   console.log("db synced!");
 
-  // Creating Admins
+  // Creating first users
   const users = await Promise.all([
     User.create({
       firstName: "Justin",
@@ -35,6 +35,42 @@ async function seed() {
       email: "EdmundFahrenheit@Vapor.com",
       password: "123",
       userType: "Admin",
+      image: "/img/edmundfahrenheit.jpg",
+    }),
+    User.create({
+      firstName: "Elvis",
+      lastName: "Presley",
+      email: "ElvisPresley@Gmail.com",
+      password: "123",
+      userType: "Member",
+    }),
+    User.create({
+      firstName: "Paul",
+      lastName: "McCartney",
+      email: "PaulMcCartney@Gmail.com",
+      password: "123",
+      userType: "Member",
+    }),
+    User.create({
+      firstName: "Tom",
+      lastName: "Scholz",
+      email: "TomScholz@Gmail.com",
+      password: "123",
+      userType: "Member",
+    }),
+    User.create({
+      firstName: "Michael",
+      lastName: "Jackson",
+      email: "MichaelJackson@Gmail.com",
+      password: "123",
+      userType: "Member",
+    }),
+    User.create({
+      firstName: "Bruce",
+      lastName: "Springsteen",
+      email: "BruceSpringsteen@Gmail.com",
+      password: "123",
+      userType: "Member",
     }),
   ]);
 
