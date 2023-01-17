@@ -3,10 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import Login from "../features/auth/Login";
 import SignUp from "../features/auth/SignUp";
-import Home from "../features/home/Home";
+import AdminRoute from "../features/AdminRoute/AdminRoute";
 import AllProducts from "../features/allProducts/allProducts";
 import { me } from "./store";
-import CartPreview from "../features/cart/CartPreview";
 import Checkout from "../features/cart/Checkout";
 
 /**
@@ -14,7 +13,7 @@ import Checkout from "../features/cart/Checkout";
  */
 
 const AppRoutes = () => {
-  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+  const user = useSelector((state) => state.auth.me);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,17 +22,15 @@ const AppRoutes = () => {
 
   return (
     <div>
-      {isLoggedIn ? (
+      {user.userType === "Admin" ? (
         <Routes>
-          <Route path="/*" element={<Home />} />
-          <Route to="/home" element={<Home />} />
+          <Route path="/*" element={<AdminRoute />} />
         </Routes>
       ) : (
         <Routes>
-          <Route path="/*" element={<AllProducts />} />
+          <Route path="/AllProducts" element={<AllProducts />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/cart" element={<CartPreview />} />
           <Route path="/checkout" element={<Checkout />} />
         </Routes>
       )}
