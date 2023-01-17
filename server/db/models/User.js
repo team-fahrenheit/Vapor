@@ -26,6 +26,12 @@ const User = db.define("user", {
     type: Sequelize.ENUM("Guest", "Member", "Admin"),
     defaultValue: "Guest",
   },
+  cart: {
+    type: Sequelize.JSONB,
+  },
+  wishlist: {
+    type: Sequelize.JSONB,
+  },
 });
 
 module.exports = User;
