@@ -32,7 +32,6 @@ export default function RecipeReviewCard(props) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  // Show: albumTitle,platform,largeFrontImage,details,regularPrice
 
   return (
     <Card sx={{ maxWidth: 300, minWidth: 300, height: "100%" }}>
