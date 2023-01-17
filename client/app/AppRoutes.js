@@ -28,6 +28,7 @@ const AppRoutes = () => {
         </Routes>
       ) : (
         <Routes>
+          <Route path="*" element={<AllProducts />} />
           <Route path="/AllProducts" element={<AllProducts />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />

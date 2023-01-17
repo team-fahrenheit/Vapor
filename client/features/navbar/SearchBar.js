@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FormControl, TextField } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { fetchAllProducts } from "../allProducts/allProductsSlice";
-import { updateSearch } from "./SearchBarSlice";
+import { updateSearch } from "./searchBarSlice";
 
 const SearchBar = () => {
   const dispatch = useDispatch();

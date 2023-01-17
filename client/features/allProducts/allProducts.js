@@ -7,7 +7,7 @@ import {
   fetchAllProducts,
   updatePage,
 } from "./allProductsSlice";
-import { getSearch } from "../navbar/SearchBarSlice";
+import { getSearch } from "../navbar/searchBarSlice";
 
 import RecipeReviewCard from "./cards";
 import BackToTopButton from "../backToTop/BackToTopButton";

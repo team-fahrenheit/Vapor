@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Grid,
   Card,
@@ -9,46 +10,58 @@ import {
   Button,
 } from "@mui/material";
 
+import { fetchAllUsers } from "./allUsersSlice";
+
 const AllUsers = () => {
-  const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllUsers());
+  }, []);
+
+  const users = useSelector((state) => {
+    return state.allUsers;
+  });
 
   return (
-    <Grid container spacing={4}>
-      {cards.map((card) => (
-        <Grid item key={card} xs={12} sm={6} md={4}>
-          <Card
-            sx={{
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <CardMedia
-              component="img"
-              sx={{
-                // 16:9
-                pt: "56.25%",
-              }}
-              image="/img/user.jpeg"
-              alt="random"
-            />
-            <CardContent sx={{ flexGrow: 1 }}>
-              <Typography gutterBottom variant="h5" component="h2">
-                Heading
-              </Typography>
-              <Typography>
-                This is a media card. You can use this section to describe the
-                content.
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="small">View</Button>
-              <Button size="small">Edit</Button>
-            </CardActions>
-          </Card>
+    <div>
+      {users && users.length ? (
+        <Grid container spacing={4}>
+          {users.map((user) => (
+            <Grid item key={user.id} xs={8} sm={4} md={2}>
+              <Card
+                sx={{
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <Typography>{user.userType}</Typography>
+                <CardMedia
+                  component="img"
+                  sx={{
+                    // 16:9
+                    pt: "16.25%",
+                  }}
+                  image={user.image}
+                  alt="random"
+                />
+                <CardContent sx={{ flexGrow: 1 }}>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {user.firstName + " " + user.lastName}
+                  </Typography>
+                  <Typography>{user.email}</Typography>
+                </CardContent>
+                <CardActions>
+                  <Button size="small">View</Button>
+                  <Button size="small">Edit</Button>
+                </CardActions>
+              </Card>
+            </Grid>
+          ))}
         </Grid>
-      ))}
-    </Grid>
+      ) : null}
+    </div>
   );
 };
 
