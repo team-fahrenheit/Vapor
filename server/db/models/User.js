@@ -28,11 +28,9 @@ const User = db.define("user", {
   },
   cart: {
     type: Sequelize.JSONB,
-    defaultValue: {},
   },
   wishlist: {
     type: Sequelize.JSONB,
-    defaultValue: {},
   },
 });
 
