@@ -33,9 +33,13 @@ export default function RecipeReviewCard(props) {
     setExpanded(!expanded);
   };
   // Show: albumTitle,platform,largeFrontImage,details,regularPrice
+  console.log(props);
   return (
     <Card sx={{ maxWidth: 300, minWidth: 300, height: "100%" }}>
-      <CardHeader title={`${props.product.albumTitle}`} />
+      <CardHeader
+        sx={{ minHeight: 100 }}
+        title={`${props.product.albumTitle}`}
+      />
       <Typography
         sx={{
           textAlign: "right",
@@ -75,9 +79,9 @@ export default function RecipeReviewCard(props) {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography>
-            {props.product.longDescriptionHtml
-              ? props.product.longDescriptionHtml.split("<br>").shift()
-              : null}
+            {props.product.longDescription
+              ? props.product.longDescription.replace(/&#[0-9]+;/gm, "")
+              : "More information coming soon."}
           </Typography>
 
           {props.product.details
