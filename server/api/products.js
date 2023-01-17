@@ -52,7 +52,7 @@ router.get("/:page", async (req, res, next) => {
     const data = await randomKey().products(
       `platform=*&class=VIDEO GAME SOFTWARE*`,
       {
-        show: "class,sku,regularPrice,longDescriptionHtml,image,albumTitle,platform,largeFrontImage,details",
+        show: "class,sku,regularPrice,longDescription,image,albumTitle,platform,largeFrontImage,details",
         pageSize,
         page: page,
       }
