@@ -23,7 +23,7 @@ const SearchBar = () => {
       <TextField
         required
         id="search-field"
-        label="Search"
+        label="Search Our Products"
         size="small"
         color="text"
         onKeyUp={handleKeyPress}

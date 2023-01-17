@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { logout } from "../../app/store";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import LogInSignUp from "./LogInSignUp";
 import SearchBar from "./SearchBar";
 import { Box, Button, Menu, MenuItem, Link as LinkMui } from "@mui/material";
@@ -56,7 +56,7 @@ const Navbar = () => {
             gap: 4,
           }}
         >
-          <Link to="/">
+          <NavLink to="/AllProducts">
             <Box
               component="img"
               sx={{
@@ -66,7 +66,7 @@ const Navbar = () => {
               alt="Vapor Logo"
               src={vaporlogo}
             />
-          </Link>
+          </NavLink>
           <LinkMui href="#" sx={{ color: "text.secondary" }}>
             PC
           </LinkMui>
