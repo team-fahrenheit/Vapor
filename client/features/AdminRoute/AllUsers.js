@@ -12,11 +12,12 @@ import {
 
 import { fetchAllUsers } from "./allUsersSlice";
 
-const AllUsers = () => {
+const AllUsers = (props) => {
   const dispatch = useDispatch();
+  const userType = props.userType;
 
   useEffect(() => {
-    dispatch(fetchAllUsers());
+    dispatch(fetchAllUsers(userType));
   }, []);
 
   const users = useSelector((state) => {
@@ -26,7 +27,7 @@ const AllUsers = () => {
   return (
     <div>
       {users && users.length ? (
-        <Grid container spacing={4}>
+        <Grid container spacing={5}>
           {users.map((user) => (
             <Grid item key={user.id} xs={8} sm={4} md={2}>
               <Card
@@ -36,17 +37,20 @@ const AllUsers = () => {
                   flexDirection: "column",
                 }}
               >
-                <Typography>{user.userType}</Typography>
-                <CardMedia
-                  component="img"
+                <CardContent sx={{ display: "flex", justifyContent: "center" }}>
+                  <Typography gutterBottom variant="h6" component="h3">
+                    {user.userType}
+                  </Typography>
+                </CardContent>
+                <CardMedia component="img" image={user.image} alt="random" />
+                <CardContent
                   sx={{
-                    // 16:9
-                    pt: "16.25%",
+                    display: "flex",
+                    justifyContent: "center",
+                    flexDirection: "column",
+                    alignItems: "center",
                   }}
-                  image={user.image}
-                  alt="random"
-                />
-                <CardContent sx={{ flexGrow: 1 }}>
+                >
                   <Typography gutterBottom variant="h5" component="h2">
                     {user.firstName + " " + user.lastName}
                   </Typography>
@@ -55,6 +59,7 @@ const AllUsers = () => {
                 <CardActions>
                   <Button size="small">View</Button>
                   <Button size="small">Edit</Button>
+                  <Button size="small">Delete</Button>
                 </CardActions>
               </Card>
             </Grid>

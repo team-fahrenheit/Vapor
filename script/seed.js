@@ -43,6 +43,7 @@ async function seed() {
       email: "ElvisPresley@Gmail.com",
       password: "123",
       userType: "Member",
+      image: "/img/ElvisPresley.jpeg",
     }),
     User.create({
       firstName: "Paul",
@@ -50,6 +51,7 @@ async function seed() {
       email: "PaulMcCartney@Gmail.com",
       password: "123",
       userType: "Member",
+      image: "/img/PaulMcCartney.jpeg",
     }),
     User.create({
       firstName: "Tom",
@@ -57,6 +59,7 @@ async function seed() {
       email: "TomScholz@Gmail.com",
       password: "123",
       userType: "Member",
+      image: "/img/TomScholz.png",
     }),
     User.create({
       firstName: "Michael",
@@ -64,6 +67,7 @@ async function seed() {
       email: "MichaelJackson@Gmail.com",
       password: "123",
       userType: "Member",
+      image: "/img/MichaelJackson.jpeg",
     }),
     User.create({
       firstName: "Bruce",
@@ -71,6 +75,7 @@ async function seed() {
       email: "BruceSpringsteen@Gmail.com",
       password: "123",
       userType: "Member",
+      image: "/img/BruceSpringsteen.jpeg",
     }),
   ]);
 
