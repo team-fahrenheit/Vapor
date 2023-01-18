@@ -1,21 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FormControl, TextField } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { fetchAllProducts } from "../allProducts/allProductsSlice";
-import { updateSearch } from "./SearchBarSlice";
+import { updateSearch } from "./searchBarSlice";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
-
-  const [searchInput, setSearchInput] = useState("");
+  const navigate = useNavigate();
 
   const handleKeyPress = (event) => {
+    event.preventDefault();
     if (event.keyCode == 13) {
+      navigate("/AllProducts");
       dispatch(updateSearch(event.target.value));
-      dispatch(fetchAllProducts({ search: searchInput, page: 1 }));
+      dispatch(fetchAllProducts({ search: event.target.value, page: 1 }));
       event.target.value = "";
     }
-    setSearchInput(event.target.value);
   };
 
   return (
@@ -27,7 +28,9 @@ const SearchBar = () => {
         size="small"
         color="text"
         onKeyUp={handleKeyPress}
-      ></TextField>
+      >
+        <Link to="/AllProducts" onKeyUp={handleKeyPress} />
+      </TextField>
     </FormControl>
   );
 };

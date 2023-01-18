@@ -6,8 +6,8 @@ import {
   fetchAllProducts,
   updatePage,
 } from "./allProductsSlice";
-import { getSearch } from "../navbar/SearchBarSlice";
-import { clearSearch } from "../navbar/SearchBarSlice";
+import { getSearch, clearSearch } from "../navbar/searchBarSlice";
+
 import RecipeReviewCard from "./cards";
 import BackToTopButton from "../backToTop/BackToTopButton";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -17,11 +17,11 @@ import { EditNotifications } from "@mui/icons-material";
 //Attributes necessary for show: class,sku,regularPrice,longDescriptionHtml,image,albumTitle,platform,largeFrontImage,details
 const AllProducts = () => {
   const dispatch = useDispatch();
-  const allProducts = useSelector(selectProducts);
   const currentSearch = useSelector(getSearch);
+  const allProducts = useSelector(selectProducts);
 
   useEffect(() => {
-    dispatch(fetchAllProducts({ search: "", page: 1 }));
+    dispatch(fetchAllProducts({ search: currentSearch, page: 1 }));
   }, []);
 
   const handleClickPageNumber = (event, page) => {
@@ -77,7 +77,7 @@ const AllProducts = () => {
       <BackToTopButton />
     </div>
   ) : (
-    <h1> Loading... </h1>
+    <h1> Your search returned no results. </h1>
   );
 };
 
