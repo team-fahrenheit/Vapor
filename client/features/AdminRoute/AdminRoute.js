@@ -9,8 +9,9 @@ import {
   Container,
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
 import { Route, Routes, NavLink } from "react-router-dom";
+
+import Checkout from "../cart/Checkout";
 import AllUsers from "./AllUsers";
 import AllProducts from "../allProducts/allProducts";
 import Infographic from "./Infographic/Infographic";
@@ -79,6 +80,7 @@ export default function AdminRoute() {
                 element={<AllUsers userType={user.userType} />}
               />
               <Route path="/AllProducts" element={<AllProducts />} />
+              <Route path="/checkout" element={<Checkout />} />
             </Routes>
             <Container sx={{ py: 8 }} maxWidth="md"></Container>
           </main>
