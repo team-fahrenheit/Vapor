@@ -71,6 +71,7 @@ export default function GuestRoute() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/checkout" element={<SignUp />} />
+          <Route path="*" element={<AllProducts />} />
         </Routes>
         <Container sx={{ py: 8 }} maxWidth="md"></Container>
       </main>
