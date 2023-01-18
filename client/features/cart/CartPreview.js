@@ -5,18 +5,80 @@ import {
   Box,
   IconButton,
   Button,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemButton,
-  ListItemText,
-  Link as LinkMui,
+  Badge,
 } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import SellIcon from "@mui/icons-material/Sell";
+import Divider from "@mui/material/Divider";
+import Paper from "@mui/material/Paper";
 
-function CartPreview() {
+let CartPreview = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
+
+  let dummyCart = [
+    {
+      sku: 123456789,
+      albumTitle: "Madden 2023",
+      platform: "PlayStation 5",
+      regularPrice: 60.0,
+      quantity: 1,
+    },
+    {
+      sku: 456789456,
+      albumTitle: "Minecraft",
+      platform: "PC",
+      regularPrice: 15.0,
+      quantity: 2,
+    },
+    {
+      sku: 987654321,
+      albumTitle: "Call of Duty: Modern Warfare",
+      platform: "Xbox",
+      regularPrice: 70.0,
+      quantity: 1,
+    },
+  ];
+
+  const cartItemCount = dummyCart.reduce(
+    (accumulator, item) => accumulator + item.quantity,
+    0
+  );
+  const cartTotal = dummyCart.reduce(
+    (accumulator, item) => accumulator + item.regularPrice * item.quantity,
+    0
+  );
+
+  const cartContent = dummyCart.map((item) => (
+    <Box key={item.sku}>
+      <Box
+        display="flex"
+        sx={{ pt: 2, pb: 2 }}
+        alignItems="start"
+        justifyContent={"space-between"}
+      >
+        <Box display="flex" flexDirection={"column"}>
+          <Typography variant="h6">{item.albumTitle}</Typography>
+          <Typography variant="subtitle2">{item.platform}</Typography>
+        </Box>
+        <Box display="flex" flexDirection={"column"}>
+          <Typography variant="h6" justifyContent={"end"}>
+            ${item.regularPrice}
+          </Typography>
+          <Box display="flex" flexDirection={"row"} sx={{ pt: 1, pb: 1 }}>
+            <Button size="small" variant="contained">
+              -
+            </Button>
+            <Typography variant="body1" justifyContent={"end"} sx={{ p: 1 }}>
+              {item.quantity}
+            </Typography>
+            <Button size="small" variant="contained">
+              +
+            </Button>
+          </Box>
+        </Box>
+      </Box>
+      <Divider variant="inset" />
+    </Box>
+  ));
 
   return (
     <>
@@ -26,50 +88,49 @@ function CartPreview() {
         color="inherit"
         onClick={() => setIsCartOpen(true)}
       >
-        <ShoppingCartIcon style={{ color: "rgba(232,230,230,0.54)" }} />
+        <Badge
+          aria-label={cartItemCount}
+          badgeContent={cartItemCount}
+          max={99}
+          color="secondary"
+        >
+          <ShoppingCartIcon style={{ color: "rgba(232,230,230,0.54)" }} />
+        </Badge>
       </IconButton>
       <Drawer
         anchor="right"
         open={isCartOpen}
         onClose={() => setIsCartOpen(false)}
       >
-        <Box p={2} width="250px" textAlign="center">
-          <Typography variant="h6" component="div">
-            Cart
-          </Typography>
-          <List>
-            <ListItem>
-              <ListItemButton>
-                <ListItemIcon>
-                  <SellIcon />
-                </ListItemIcon>
-                <ListItemText primary="Cart Item 1 | PS5 | $50" />
-              </ListItemButton>
-            </ListItem>
-            <ListItem>
-              <ListItemButton>
-                <ListItemIcon>
-                  <SellIcon />
-                </ListItemIcon>
-                <ListItemText primary="Cart Item 2 | Xbox Series X | $20" />
-              </ListItemButton>
-            </ListItem>
-            <ListItem>
-              <ListItemButton>
-                <ListItemIcon>
-                  <SellIcon />
-                </ListItemIcon>
-                <ListItemText primary="Cart Item 3 | PC | $20" />
-              </ListItemButton>
-            </ListItem>
-          </List>
+        <Box
+          sx={{ pt: 3 }}
+          display="flex"
+          justifyContent={"center"}
+          flexDirection="column"
+          alignItems="center"
+        >
+          <Typography variant="h4">Cart</Typography>
         </Box>
-        <LinkMui href="/checkout">
-          <Button textAlign="center">Pay Now $50.00</Button>
-        </LinkMui>
+        <Paper elevation={0} sx={{ mt: 1, width: "95%", p: 3 }}>
+          {cartContent}
+        </Paper>
+        <Button
+          sx={{ mt: 2, ml: 8, mr: 8 }}
+          variant="contained"
+          href="/checkout"
+        >
+          <Typography
+            variant="subtitle1"
+            sx={{ mr: 1 }}
+          >{`Checkout `}</Typography>
+          <Typography
+            variant="subtitle2"
+            color="darkgray"
+          >{` $${cartTotal}`}</Typography>
+        </Button>
       </Drawer>
     </>
   );
-}
+};
 
 export default CartPreview;
