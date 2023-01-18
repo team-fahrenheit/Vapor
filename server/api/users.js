@@ -17,17 +17,6 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-// router.put("/:id", async (req, res, next) => {
-//   try {
-//     console.log("MADE IT TO API/USERS/ADDTOCART");
-//     const userToUpdate = await User.findByPk(req.params.userId);
-//     const updatedUserCart = await userToUpdate.cart.update(req.body);
-//     res.status(200).send(updatedUserCart);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
-
 router.get("/cart/getAll", async (req, res, next) => {
   try {
     const user = await User.findAll({ attributes: ["id", "cart"] });
@@ -48,7 +37,7 @@ router.get("/cart/:userId", async (req, res, next) => {
   }
 });
 
-router.put("/cart/add/:userId", async (req, res, next) => {
+router.put("/cart/:userId/add", async (req, res, next) => {
   try {
     const userCart = await User.findByPk(req.params.userId, {
       attributes: ["id", "cart"],
@@ -67,7 +56,7 @@ router.put("/cart/add/:userId", async (req, res, next) => {
   }
 });
 
-router.put("/cart/remove/:userId", async (req, res, next) => {
+router.put("/cart/:userId/remove", async (req, res, next) => {
   try {
     const userCart = await User.findByPk(req.params.userId, {
       attributes: ["id", "cart"],
@@ -84,5 +73,18 @@ router.put("/cart/remove/:userId", async (req, res, next) => {
     next(err);
   }
 });
+
+// router.put("/cart/:userId/updateQuantity", async (req, res, next) => {
+//   try {
+//     const userCart = await User.findByPk(req.params.userId, {
+//       attributes: ["id", "cart"],
+//     });
+//     let itemToUpdate = userCart.dataValues.cart.filter((item) => {
+//       return item.sku === req.body.sku;
+//     });
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 
 module.exports = router;
