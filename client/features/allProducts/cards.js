@@ -55,7 +55,7 @@ export default function RecipeReviewCard(props) {
   return (
     <Card sx={{ maxWidth: 240, minWidth: 240, height: "100%" }}>
       <CardHeader
-        sx={{ minHeight: 100 }}
+        sx={{ minHeight: 150 }}
         title={`${props.product.albumTitle}`}
       />
       <Typography
