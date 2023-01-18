@@ -27,7 +27,8 @@ const User = db.define("user", {
     defaultValue: "Guest",
   },
   cart: {
-    type: Sequelize.JSONB,
+    type: Sequelize.ARRAY(Sequelize.JSONB),
+    defaultValue: [],
   },
   wishlist: {
     type: Sequelize.JSONB,
