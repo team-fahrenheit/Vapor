@@ -8,10 +8,13 @@ const searchBarSlice = createSlice({
     updateSearch(state, action) {
       return action.payload;
     },
+    clearSearch() {
+      return "";
+    },
   },
 });
 
-export const { updateSearch } = searchBarSlice.actions;
+export const { updateSearch, clearSearch } = searchBarSlice.actions;
 
 //action to be dispatched, return what we are currently searching for
 export const getSearch = (state) => {

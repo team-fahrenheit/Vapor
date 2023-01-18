@@ -1,16 +1,18 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Pagination, Grid, PaginationItem } from "@mui/material";
-
 import {
   selectProducts,
   fetchAllProducts,
   updatePage,
 } from "./allProductsSlice";
-import { getSearch } from "../navbar/searchBarSlice";
+import { getSearch, clearSearch } from "../navbar/searchBarSlice";
 
 import RecipeReviewCard from "./cards";
 import BackToTopButton from "../backToTop/BackToTopButton";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { Button } from "@mui/material";
+import { EditNotifications } from "@mui/icons-material";
 
 //Attributes necessary for show: class,sku,regularPrice,longDescriptionHtml,image,albumTitle,platform,largeFrontImage,details
 const AllProducts = () => {
@@ -32,8 +34,26 @@ const AllProducts = () => {
     }
   };
 
+  const resetSearch = () => {
+    dispatch(fetchAllProducts({ search: "", page: 1 }));
+    dispatch(clearSearch());
+  };
+
   return allProducts[allProducts.currentPage] ? (
     <div>
+      {currentSearch === "" ? null : (
+        <Button
+          variant="outlined"
+          startIcon={<DeleteIcon />}
+          onClick={resetSearch}
+          sx={{
+            float: "right",
+            m: 1,
+          }}
+        >
+          Clear Search
+        </Button>
+      )}
       <Grid
         container
         sx={{
