@@ -17,3 +17,14 @@ router.get("/", async (req, res, next) => {
     next(err);
   }
 });
+
+router.put("/:id", async (req, res, next) => {
+  try {
+    console.log("MADE IT TO API/USERS/ADDTOCART");
+    const userToUpdate = await User.findByPk(req.params.userId);
+    const updatedUserCart = await userToUpdate.cart.update(req.body);
+    res.status(200).send(updatedUserCart);
+  } catch (err) {
+    next(err);
+  }
+});

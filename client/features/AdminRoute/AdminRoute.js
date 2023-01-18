@@ -9,7 +9,6 @@ import {
   Container,
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
 import { Route, Routes, NavLink } from "react-router-dom";
 import AllUsers from "./AllUsers";
 import AllProducts from "../allProducts/allProducts";
