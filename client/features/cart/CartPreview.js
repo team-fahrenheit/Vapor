@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useDispatch, useEffect } from "react";
 import {
   Drawer,
   Typography,
@@ -10,44 +10,53 @@ import {
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Divider from "@mui/material/Divider";
 import Paper from "@mui/material/Paper";
+import { useSelector } from "react-redux";
+
+let exampleCartData = [
+  //REMOVE THIS BEFORE FINAL DEPLOY
+  {
+    sku: 123456789,
+    albumTitle: "Madden 2023",
+    platform: "PlayStation 5",
+    regularPrice: 60.0,
+    quantity: 1,
+  },
+  {
+    sku: 456789456,
+    albumTitle: "Minecraft",
+    platform: "PC",
+    regularPrice: 15.0,
+    quantity: 2,
+  },
+  {
+    sku: 987654321,
+    albumTitle: "Call of Duty: Modern Warfare",
+    platform: "Xbox",
+    regularPrice: 70.0,
+    quantity: 1,
+  },
+];
 
 let CartPreview = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+  const loggedInCart = useSelector((state) => state.auth.me.cart);
 
-  let dummyCart = [
-    {
-      sku: 123456789,
-      albumTitle: "Madden 2023",
-      platform: "PlayStation 5",
-      regularPrice: 60.0,
-      quantity: 1,
-    },
-    {
-      sku: 456789456,
-      albumTitle: "Minecraft",
-      platform: "PC",
-      regularPrice: 15.0,
-      quantity: 2,
-    },
-    {
-      sku: 987654321,
-      albumTitle: "Call of Duty: Modern Warfare",
-      platform: "Xbox",
-      regularPrice: 70.0,
-      quantity: 1,
-    },
-  ];
+  const userCart = isLoggedIn ? loggedInCart : [];
 
-  const cartItemCount = dummyCart.reduce(
+  useEffect(() => {}, [userCart]);
+
+  const cartItemCount = userCart.reduce(
     (accumulator, item) => accumulator + item.quantity,
     0
   );
-  const cartTotal = dummyCart.reduce(
+
+  const cartTotal = userCart.reduce(
     (accumulator, item) => accumulator + item.regularPrice * item.quantity,
     0
   );
 
-  const cartContent = dummyCart.map((item) => (
+  const cartContent = userCart.map((item) => (
     <Box key={item.sku}>
       <Box
         display="flex"

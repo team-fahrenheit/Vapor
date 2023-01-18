@@ -1,13 +1,10 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
-import Login from "../features/auth/Login";
-import SignUp from "../features/auth/SignUp";
 import AdminRoute from "../features/AdminRoute/AdminRoute";
 import MemberRoute from "../features/MemberRoute/MemberRoute";
-import AllProducts from "../features/allProducts/allProducts";
+import GuestRoute from "../features/GuestRoute/GuestRoute";
 import { me } from "./store";
-import Checkout from "../features/cart/Checkout";
 
 /**
  * COMPONENT
@@ -25,10 +22,7 @@ const AppRoutes = () => {
     <div>
       {!user.userType ? (
         <Routes>
-          <Route path="/AllProducts" element={<AllProducts />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/*" element={<GuestRoute />} />
         </Routes>
       ) : user.userType === "Admin" ? (
         <Routes>

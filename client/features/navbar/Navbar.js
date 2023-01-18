@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import LogInSignUp from "./LogInSignUp";
 import SearchBar from "./SearchBar";
+import { clearSearch } from "../../app/store";
+import { fetchAllProducts } from "../allProducts/allProductsSlice";
 import { Box, Button, Menu, MenuItem, Link as LinkMui } from "@mui/material";
 import CartPreview from "../cart/CartPreview";
 import vaporlogo from "../../../public/img/vaporlogo.png";
@@ -29,9 +31,9 @@ const Navbar = () => {
     setAccountBtn(null);
   };
 
-  const handleClose = () => {
-    evt.preventDefault();
-    console.log("hey look at me search");
+  const resetSearch = () => {
+    dispatch(clearSearch());
+    dispatch(fetchAllProducts({ search: "", page: 1 }));
   };
 
   return (
@@ -56,7 +58,7 @@ const Navbar = () => {
             gap: 4,
           }}
         >
-          <NavLink to="/AllProducts">
+          <NavLink to="/AllProducts" onClick={() => resetSearch()}>
             <Box
               component="img"
               sx={{

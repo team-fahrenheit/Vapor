@@ -76,7 +76,7 @@ export const signup = createAsyncThunk(
 export const authSlice = createSlice({
   name: "auth",
   initialState: {
-    me: {},
+    me: { cart: [] },
     error: null,
   },
   reducers: {
