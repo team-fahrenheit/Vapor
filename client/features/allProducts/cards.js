@@ -15,8 +15,8 @@ import {
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import { addToCartAsync } from "../cart/cartSlice";
 import { v4 as uuidv4 } from "uuid";
+import { addToCartThunk } from "../auth/authSlice";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -31,7 +31,7 @@ const ExpandMore = styled((props) => {
 
 export default function RecipeReviewCard(props) {
   const [expanded, setExpanded] = useState(false);
-  const userId = useSelector((state) => state.auth.me.id);
+  const currentUserId = useSelector((state) => state.auth.me.id);
   const dispatch = useDispatch();
 
   const handleExpandClick = () => {
@@ -41,27 +41,21 @@ export default function RecipeReviewCard(props) {
   const handleAddToCart = (e) => {
     e.preventDefault();
     dispatch(
-      addToCartAsync(
-        userId,
-        props.product.albumTitle,
-        props.product.platform,
-        props.product.regularPrice
-      )
+      addToCartThunk({
+        userId: currentUserId,
+        sku: props.product.sku,
+        platform: props.product.platform,
+        quantity: 1,
+        albumTitle: props.product.albumTitle,
+        regularPrice: props.product.regularPrice,
+      })
     );
-    console.log(
-      "DISPATCHED THE FOLLOWING:---" +
-        userId +
-        props.product.albumTitle +
-        props.product.platform +
-        props.product.regularPrice
-    );
-    // confirm("Item added to cart.");
   };
 
   return (
     <Card sx={{ maxWidth: 240, minWidth: 240, height: "100%" }}>
       <CardHeader
-        sx={{ minHeight: 100 }}
+        sx={{ minHeight: 150 }}
         title={`${props.product.albumTitle}`}
       />
       <Typography

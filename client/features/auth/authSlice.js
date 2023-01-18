@@ -71,6 +71,43 @@ export const signup = createAsyncThunk(
   }
 );
 
+//handling cart thunks
+export const getCartByIdThunk = createAsyncThunk(
+  "cart/id",
+  async ({ userId }) => {
+    const { data } = await axios.get(`/api/users/cart/${userId}`);
+    return data;
+  }
+);
+
+export const addToCartThunk = createAsyncThunk(
+  "cart/add",
+  async ({ userId, sku, platform, quantity, albumTitle, regularPrice }) => {
+    const { data } = await axios.put(`/api/users/cart/${userId}/add`, {
+      sku,
+      platform,
+      quantity,
+      albumTitle,
+      regularPrice,
+    });
+    return data;
+  }
+);
+
+export const removeFromCartThunk = createAsyncThunk(
+  "cart/remove",
+  async ({ userId, sku, platform, quantity, albumTitle, regularPrice }) => {
+    const { data } = await axios.put(`/api/users/cart/${userId}/remove`, {
+      sku,
+      platform,
+      quantity,
+      albumTitle,
+      regularPrice,
+    });
+    return data;
+  }
+);
+
 /*
   SLICE
 */
@@ -83,7 +120,7 @@ export const authSlice = createSlice({
   reducers: {
     logout(state, action) {
       window.localStorage.removeItem(TOKEN);
-      state.me = {};
+      state.me = { cart: [] };
       state.error = null;
     },
   },
@@ -100,6 +137,16 @@ export const authSlice = createSlice({
     builder.addCase(signup.rejected, (state, action) => {
       state.error = action.payload;
     });
+    //cart thunk reducers
+    builder.addCase(getCartByIdThunk.fulfilled, (state, action) => {
+      state.me.cart = action.payload.cart;
+    });
+    builder.addCase(addToCartThunk.fulfilled, (state, action) => {
+      state.me.cart = action.payload.cart;
+    });
+    builder.addCase(removeFromCartThunk.fulfilled, (state, action) => {
+      state.me.cart = action.payload.cart;
+    });
   },
 });
 
@@ -107,6 +154,10 @@ export const authSlice = createSlice({
   ACTIONS
 */
 export const { logout } = authSlice.actions;
+
+export const getAuth = (state) => {
+  return state.auth;
+};
 
 /*
   REDUCER
