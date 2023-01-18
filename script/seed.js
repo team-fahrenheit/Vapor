@@ -21,6 +21,29 @@ async function seed() {
       email: "JustinWooley@Vapor.com",
       password: "123",
       userType: "Admin",
+      cart: [
+        {
+          sku: 123456789,
+          albumTitle: "Madden 2099",
+          platform: "PlayStation 5",
+          regularPrice: 30.0,
+          quantity: 1,
+        },
+        {
+          sku: 456789456,
+          albumTitle: "Minecraft 2.0",
+          platform: "PC",
+          regularPrice: 150.0,
+          quantity: 2,
+        },
+        {
+          sku: 987654321,
+          albumTitle: "Call of Duty XYZ",
+          platform: "Xbox",
+          regularPrice: 100.0,
+          quantity: 1,
+        },
+      ],
     }),
     User.create({
       firstName: "Jason",
