@@ -94,7 +94,7 @@ export const addToCartThunk = createAsyncThunk(
 );
 
 export const removeFromCartThunk = createAsyncThunk(
-  "cart/add",
+  "cart/remove",
   async ({ userId, sku, platform, quantity, albumTitle, regularPrice }) => {
     const { data } = await axios.put(`/api/users/cart/${userId}/remove`, {
       sku,
