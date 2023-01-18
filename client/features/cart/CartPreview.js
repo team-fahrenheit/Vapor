@@ -1,4 +1,4 @@
-import React, { useState, useDispatch, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Drawer,
   Typography,
@@ -8,41 +8,17 @@ import {
   Badge,
 } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import Divider from "@mui/material/Divider";
 import Paper from "@mui/material/Paper";
 import { useSelector } from "react-redux";
-
-let exampleCartData = [
-  //REMOVE THIS BEFORE FINAL DEPLOY
-  {
-    sku: 123456789,
-    albumTitle: "Madden 2023",
-    platform: "PlayStation 5",
-    regularPrice: 60.0,
-    quantity: 1,
-  },
-  {
-    sku: 456789456,
-    albumTitle: "Minecraft",
-    platform: "PC",
-    regularPrice: 15.0,
-    quantity: 2,
-  },
-  {
-    sku: 987654321,
-    albumTitle: "Call of Duty: Modern Warfare",
-    platform: "Xbox",
-    regularPrice: 70.0,
-    quantity: 1,
-  },
-];
+import CartContent from "./CartContent";
+import { getAuth } from "../auth/authSlice";
 
 let CartPreview = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
-  const loggedInCart = useSelector((state) => state.auth.me.cart);
+  const loggedInCart = useSelector(getAuth);
 
-  const userCart = isLoggedIn ? loggedInCart : [];
+  const userCart = isLoggedIn ? loggedInCart.me.cart : [];
 
   useEffect(() => {}, [userCart]);
 
@@ -55,39 +31,6 @@ let CartPreview = () => {
     (accumulator, item) => accumulator + item.regularPrice * item.quantity,
     0
   );
-
-  const cartContent = userCart.map((item) => (
-    <Box key={item.sku}>
-      <Box
-        display="flex"
-        sx={{ pt: 2, pb: 2 }}
-        alignItems="start"
-        justifyContent={"space-between"}
-      >
-        <Box display="flex" flexDirection={"column"}>
-          <Typography variant="h6">{item.albumTitle}</Typography>
-          <Typography variant="subtitle2">{item.platform}</Typography>
-        </Box>
-        <Box display="flex" flexDirection={"column"}>
-          <Typography variant="h6" justifyContent={"end"}>
-            ${item.regularPrice}
-          </Typography>
-          <Box display="flex" flexDirection={"row"} sx={{ pt: 1, pb: 1 }}>
-            <Button size="small" variant="contained">
-              -
-            </Button>
-            <Typography variant="body1" justifyContent={"end"} sx={{ p: 1 }}>
-              {item.quantity}
-            </Typography>
-            <Button size="small" variant="contained">
-              +
-            </Button>
-          </Box>
-        </Box>
-      </Box>
-      <Divider variant="inset" />
-    </Box>
-  ));
 
   return (
     <>
@@ -121,7 +64,9 @@ let CartPreview = () => {
           <Typography variant="h4">Cart</Typography>
         </Box>
         <Paper elevation={0} sx={{ mt: 1, width: "95%", p: 3 }}>
-          {cartContent}
+          {userCart.map((item) => {
+            return <CartContent key={item.sku} item={item} />;
+          })}
         </Paper>
         <Button
           sx={{ mt: 2, ml: 8, mr: 8 }}
@@ -132,10 +77,9 @@ let CartPreview = () => {
             variant="subtitle1"
             sx={{ mr: 1 }}
           >{`Checkout `}</Typography>
-          <Typography
-            variant="subtitle2"
-            color="darkgray"
-          >{` $${cartTotal}`}</Typography>
+          <Typography variant="subtitle2" color="darkgray">
+            {` $${cartTotal}`}
+          </Typography>
         </Button>
       </Drawer>
     </>
