@@ -18,19 +18,22 @@ let CartPreview = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const loggedInCart = useSelector(getAuth);
 
-  const userCart = isLoggedIn ? loggedInCart.me.cart : [];
+  const userCart =
+    isLoggedIn && loggedInCart.me.cart ? loggedInCart.me.cart : [];
+
+  console.log(userCart);
 
   useEffect(() => {}, [userCart]);
 
-  const cartItemCount = userCart.reduce(
-    (accumulator, item) => accumulator + item.quantity,
-    0
-  );
+  // const cartItemCount = userCart.reduce(
+  //   (accumulator, item) => accumulator + item.quantity,
+  //   0
+  // );
 
-  const cartTotal = userCart.reduce(
-    (accumulator, item) => accumulator + item.regularPrice * item.quantity,
-    0
-  );
+  // const cartTotal = userCart.reduce(
+  //   (accumulator, item) => accumulator + item.regularPrice * item.quantity,
+  //   0
+  // );
 
   return (
     <>
@@ -41,8 +44,8 @@ let CartPreview = () => {
         onClick={() => setIsCartOpen(true)}
       >
         <Badge
-          aria-label={cartItemCount}
-          badgeContent={cartItemCount}
+          // aria-label={cartItemCount}
+          // badgeContent={cartItemCount}
           max={99}
           color="secondary"
         >
@@ -64,9 +67,9 @@ let CartPreview = () => {
           <Typography variant="h4">Cart</Typography>
         </Box>
         <Paper elevation={0} sx={{ mt: 1, width: "95%", p: 3 }}>
-          {userCart.map((item) => {
+          {/* {userCart.map((item) => {
             return <CartContent key={item.sku} item={item} />;
-          })}
+          })} */}
         </Paper>
         <Button
           sx={{ mt: 2, ml: 8, mr: 8 }}
@@ -78,7 +81,7 @@ let CartPreview = () => {
             sx={{ mr: 1 }}
           >{`Checkout `}</Typography>
           <Typography variant="subtitle2" color="darkgray">
-            {` $${cartTotal}`}
+            {/* {` $${cartTotal}`} */}
           </Typography>
         </Button>
       </Drawer>
