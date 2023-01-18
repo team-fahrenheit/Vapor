@@ -154,6 +154,10 @@ export const authSlice = createSlice({
 */
 export const { logout } = authSlice.actions;
 
+export const getAuth = (state) => {
+  return state.auth;
+};
+
 /*
   REDUCER
 */
