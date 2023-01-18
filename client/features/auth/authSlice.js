@@ -57,6 +57,7 @@ export const signup = createAsyncThunk(
         lastName,
         email,
         password,
+        userType: "Member",
       });
       window.localStorage.setItem(TOKEN, res.data.token);
       thunkAPI.dispatch(me());

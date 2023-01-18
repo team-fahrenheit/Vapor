@@ -18,7 +18,7 @@ async function seed() {
     User.create({
       firstName: "Justin",
       lastName: "Wooley",
-      email: "JustinWooley@Vapor.com",
+      email: "justinwooley@vapor.com",
       password: "123",
       userType: "Admin",
       cart: [
@@ -48,14 +48,14 @@ async function seed() {
     User.create({
       firstName: "Jason",
       lastName: "Potvin",
-      email: "JasonPotvin@Vapor.com",
+      email: "jasonpotvin@vapor.com",
       password: "123",
       userType: "Admin",
     }),
     User.create({
       firstName: "Edmund",
       lastName: "Fahrenheit",
-      email: "EdmundFahrenheit@Vapor.com",
+      email: "edmundfahrenheit@vapor.com",
       password: "123",
       userType: "Admin",
       image: "/img/edmundfahrenheit.jpg",
@@ -63,7 +63,7 @@ async function seed() {
     User.create({
       firstName: "Elvis",
       lastName: "Presley",
-      email: "ElvisPresley@Gmail.com",
+      email: "elvispresley@gmail.com",
       password: "123",
       userType: "Member",
       image: "/img/ElvisPresley.jpeg",
@@ -71,7 +71,7 @@ async function seed() {
     User.create({
       firstName: "Paul",
       lastName: "McCartney",
-      email: "PaulMcCartney@Gmail.com",
+      email: "paulmccartney@gmail.com",
       password: "123",
       userType: "Member",
       image: "/img/PaulMcCartney.jpeg",
@@ -79,7 +79,7 @@ async function seed() {
     User.create({
       firstName: "Tom",
       lastName: "Scholz",
-      email: "TomScholz@Gmail.com",
+      email: "tomscholz@gmail.com",
       password: "123",
       userType: "Member",
       image: "/img/TomScholz.png",
@@ -87,7 +87,7 @@ async function seed() {
     User.create({
       firstName: "Michael",
       lastName: "Jackson",
-      email: "MichaelJackson@Gmail.com",
+      email: "michaeljackson@gmail.com",
       password: "123",
       userType: "Member",
       image: "/img/MichaelJackson.jpeg",
@@ -95,7 +95,7 @@ async function seed() {
     User.create({
       firstName: "Bruce",
       lastName: "Springsteen",
-      email: "BruceSpringsteen@Gmail.com",
+      email: "brucespringsteen@gmail.com",
       password: "123",
       userType: "Member",
       image: "/img/BruceSpringsteen.jpeg",

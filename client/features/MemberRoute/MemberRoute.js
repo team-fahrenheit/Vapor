@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
+import Checkout from "../cart/Checkout";
 import AllProducts from "../allProducts/allProducts";
 import Infographic from "../AdminRoute/Infographic/Infographic";
 
@@ -71,6 +72,7 @@ export default function MemberRoute() {
               <Route path="/login" element={<AllProducts />} />
               <Route path="/AllProducts" element={<AllProducts />} />
               <Route path="/MyAccount" element={<Infographic />} />
+              <Route path="/checkout" element={<Checkout />} />
             </Routes>
             <Container sx={{ py: 8 }} maxWidth="md"></Container>
           </main>

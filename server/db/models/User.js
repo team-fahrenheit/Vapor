@@ -27,10 +27,12 @@ const User = db.define("user", {
     defaultValue: "Guest",
   },
   cart: {
-    type: Sequelize.JSONB,
+    type: Sequelize.ARRAY(Sequelize.JSONB),
+    defaultValue: [],
   },
   wishlist: {
-    type: Sequelize.JSONB,
+    type: Sequelize.ARRAY(Sequelize.JSONB),
+    defaultValue: [],
   },
 });
 
@@ -51,8 +53,8 @@ User.prototype.generateToken = function () {
 /**
  * classMethods
  */
-User.authenticate = async function ({ email, password }) {
-  const user = await this.findOne({ where: { email } });
+User.authenticate = async function ({ lowerCaseEmail, password }) {
+  const user = await this.findOne({ where: { email: lowerCaseEmail } });
   if (!user || !(await user.correctPassword(password))) {
     const error = Error("Incorrect email/password");
     error.status = 401;
