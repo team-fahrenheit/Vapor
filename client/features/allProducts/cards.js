@@ -1,5 +1,7 @@
 import * as React from "react";
 import { styled } from "@mui/material/styles";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Card,
   CardHeader,
@@ -13,6 +15,7 @@ import {
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import { addToCartAsync } from "../cart/cartSlice";
 import { v4 as uuidv4 } from "uuid";
 
 const ExpandMore = styled((props) => {
@@ -27,10 +30,32 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function RecipeReviewCard(props) {
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const userId = useSelector((state) => state.auth.me.id);
+  const dispatch = useDispatch();
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+    dispatch(
+      addToCartAsync(
+        userId,
+        props.product.albumTitle,
+        props.product.platform,
+        props.product.regularPrice
+      )
+    );
+    console.log(
+      "DISPATCHED THE FOLLOWING:---" +
+        userId +
+        props.product.albumTitle +
+        props.product.platform +
+        props.product.regularPrice
+    );
+    // confirm("Item added to cart.");
   };
 
   return (
@@ -62,7 +87,7 @@ export default function RecipeReviewCard(props) {
         <IconButton aria-label="wishlist-button">
           <FavoriteIcon style={{ color: "#5c5c5c" }} />
         </IconButton>
-        <IconButton aria-label="shopping-cart-button">
+        <IconButton aria-label="shopping-cart-button" onClick={handleAddToCart}>
           <AddShoppingCartIcon style={{ color: "#3a6ea5" }} />
         </IconButton>
 

@@ -12,6 +12,31 @@ import Divider from "@mui/material/Divider";
 import Paper from "@mui/material/Paper";
 import { useSelector } from "react-redux";
 
+let exampleCartData = [
+  //REMOVE THIS BEFORE FINAL DEPLOY
+  {
+    sku: 123456789,
+    albumTitle: "Madden 2023",
+    platform: "PlayStation 5",
+    regularPrice: 60.0,
+    quantity: 1,
+  },
+  {
+    sku: 456789456,
+    albumTitle: "Minecraft",
+    platform: "PC",
+    regularPrice: 15.0,
+    quantity: 2,
+  },
+  {
+    sku: 987654321,
+    albumTitle: "Call of Duty: Modern Warfare",
+    platform: "Xbox",
+    regularPrice: 70.0,
+    quantity: 1,
+  },
+];
+
 let CartPreview = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const userCart = useSelector((state) => state.auth.me.cart);
