@@ -39,7 +39,10 @@ let exampleCartData = [
 
 let CartPreview = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const userCart = useSelector((state) => state.auth.me.cart);
+  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+  const loggedInCart = useSelector((state) => state.auth.me.cart);
+
+  const userCart = isLoggedIn ? loggedInCart : [];
 
   useEffect(() => {}, [userCart]);
 
@@ -47,6 +50,7 @@ let CartPreview = () => {
     (accumulator, item) => accumulator + item.quantity,
     0
   );
+
   const cartTotal = userCart.reduce(
     (accumulator, item) => accumulator + item.regularPrice * item.quantity,
     0
