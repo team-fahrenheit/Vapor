@@ -31,7 +31,7 @@ router.get("/cart/getAll", async (req, res, next) => {
 router.get("/cart/:userId", async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId, {
-      attributes: ["id", "cart"],
+      attributes: ["cart"],
     });
     res.status(200).send(user);
   } catch (err) {
@@ -42,7 +42,7 @@ router.get("/cart/:userId", async (req, res, next) => {
 router.put("/cart/:userId/add", async (req, res, next) => {
   try {
     const userCart = await User.findByPk(req.params.userId, {
-      attributes: ["id", "cart"],
+      attributes: ["cart"],
     });
     if (userCart.dataValues.cart === null) {
       userCart.dataValues.cart = [];
@@ -61,7 +61,7 @@ router.put("/cart/:userId/add", async (req, res, next) => {
 router.put("/cart/:userId/remove", async (req, res, next) => {
   try {
     const userCart = await User.findByPk(req.params.userId, {
-      attributes: ["id", "cart"],
+      attributes: ["cart"],
     });
     const updatedCart = userCart.dataValues.cart.filter((item) => {
       return item.sku != req.body.sku;
