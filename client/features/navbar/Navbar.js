@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { logout } from "../../app/store";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import LogInSignUp from "./LogInSignUp";
 import SearchBar from "./SearchBar";
 import { Box, Button, Menu, MenuItem, Link as LinkMui } from "@mui/material";
