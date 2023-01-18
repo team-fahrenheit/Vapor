@@ -1,13 +1,14 @@
 import React from "react";
 import { Typography, Box, Button } from "@mui/material";
 import Divider from "@mui/material/Divider";
-import Paper from "@mui/material/Paper";
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromCartThunk } from "../auth/authSlice";
+import { getAuth } from "../auth/authSlice";
 
 const CartContent = (props) => {
   const dispatch = useDispatch();
   const currentUserId = useSelector((state) => state.auth.me.id);
+  const loggedInCart = useSelector(getAuth);
 
   const deleteItemFromCart = (e) => {
     e.preventDefault();
