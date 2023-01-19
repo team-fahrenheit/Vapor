@@ -14,6 +14,7 @@ LinkedIn:
 - Implements user authentication and password encryption
 - Stack: PERN (Postgresql, Express, React, Node)
 - Node libraries featured: Redux, MUI (Material UI), JWT (JSON Web Tokens), Sequelize, Bcrypt
+- Check it out at <a href='https://vapor.onrender.com/'>VAPOR</a>
 
 ## Set Up Depencies and Database
 - Obtain <a href='https://bestbuyapis.github.io/api-documentation/?javascript#getting-started'>Best Buy API keys</a> with non-gmail or .edu accounts
