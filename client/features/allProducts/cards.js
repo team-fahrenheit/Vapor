@@ -31,6 +31,8 @@ const ExpandMore = styled((props) => {
 
 export default function RecipeReviewCard(props) {
   const [expanded, setExpanded] = useState(false);
+  const [addCartDisabled, setAddCartDisabled] = useState(false);
+
   const currentUserId = useSelector((state) => state.auth.me.id);
   const dispatch = useDispatch();
 
@@ -40,6 +42,7 @@ export default function RecipeReviewCard(props) {
 
   const handleAddToCart = (e) => {
     e.preventDefault();
+    setAddCartDisabled(true);
     dispatch(
       addToCartThunk({
         userId: currentUserId,
@@ -81,9 +84,17 @@ export default function RecipeReviewCard(props) {
         <IconButton aria-label="wishlist-button">
           <FavoriteIcon style={{ color: "#5c5c5c" }} />
         </IconButton>
-        <IconButton aria-label="shopping-cart-button" onClick={handleAddToCart}>
-          <AddShoppingCartIcon style={{ color: "#3a6ea5" }} />
-        </IconButton>
+
+        {addCartDisabled ? (
+          "Added to Cart!"
+        ) : (
+          <IconButton
+            aria-label="shopping-cart-button"
+            onClick={handleAddToCart}
+          >
+            <AddShoppingCartIcon style={{ color: "#3a6ea5" }} />
+          </IconButton>
+        )}
 
         <ExpandMore
           expand={expanded}
