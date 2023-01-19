@@ -1,10 +1,8 @@
-const { ConstructionOutlined } = require("@mui/icons-material");
-
 const router = require("express").Router();
-
-const key1 = require("bestbuy")("dcQWrkKAOGwL1Re2HMUXZhuc");
-const key2 = require("bestbuy")("X6B25uJmm0ZmNiuGiYoTN44J");
-const key3 = require("bestbuy")("nSXdVIwLA96udiH7uteA45US");
+require("dotenv").config();
+const key1 = require("bestbuy")(process.env.key1);
+const key2 = require("bestbuy")(process.env.key2);
+const key3 = require("bestbuy")(process.env.key3);
 
 // pageSize is number of products per query to the API
 // productsPerPage is number of products displayed per page on the front end

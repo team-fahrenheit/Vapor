@@ -16,7 +16,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { v4 as uuidv4 } from "uuid";
-import { addToCartThunk } from "../auth/authSlice";
+import { addToCartThunk, addToWishlistThunk } from "../auth/authSlice";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -31,6 +31,9 @@ const ExpandMore = styled((props) => {
 
 export default function RecipeReviewCard(props) {
   const [expanded, setExpanded] = useState(false);
+  const [addCartDisabled, setAddCartDisabled] = useState(false);
+  const [addWishlistDisabled, setAddWishlistDisabled] = useState(false);
+
   const currentUserId = useSelector((state) => state.auth.me.id);
   const dispatch = useDispatch();
 
@@ -40,19 +43,8 @@ export default function RecipeReviewCard(props) {
 
   const handleAddToCart = (e) => {
     e.preventDefault();
-    if (state.auth.me.id) {
-      dispatch(
-        addToCartThunk({
-          userId: currentUserId,
-          sku: props.product.sku,
-          platform: props.product.platform,
-          quantity: 1,
-          albumTitle: props.product.albumTitle,
-          regularPrice: props.product.regularPrice,
-        })
-      );
-    } else {
-      let item = {
+    dispatch(
+      addToCartThunk({
         userId: currentUserId,
         sku: props.product.sku,
         platform: props.product.platform,
@@ -62,6 +54,21 @@ export default function RecipeReviewCard(props) {
       };
       state.auth.me.cart.push(item);
     }
+  };
+
+  const handleAddToWishlist = (e) => {
+    e.preventDefault();
+    setAddWishlistDisabled(true);
+    dispatch(
+      addToWishlistThunk({
+        userId: currentUserId,
+        sku: props.product.sku,
+        platform: props.product.platform,
+        quantity: 1,
+        albumTitle: props.product.albumTitle,
+        regularPrice: props.product.regularPrice,
+      })
+    );
   };
 
   return (
@@ -90,12 +97,27 @@ export default function RecipeReviewCard(props) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="wishlist-button">
-          <FavoriteIcon style={{ color: "#5c5c5c" }} />
-        </IconButton>
-        <IconButton aria-label="shopping-cart-button" onClick={handleAddToCart}>
-          <AddShoppingCartIcon style={{ color: "#3a6ea5" }} />
-        </IconButton>
+        {addWishlistDisabled ? (
+          "Added to wishlist!"
+        ) : (
+          <IconButton
+            aria-label="wishlist-button"
+            onClick={handleAddToWishlist}
+          >
+            <FavoriteIcon style={{ color: "#5c5c5c" }} />
+          </IconButton>
+        )}
+
+        {addCartDisabled ? (
+          "Added to Cart!"
+        ) : (
+          <IconButton
+            aria-label="shopping-cart-button"
+            onClick={handleAddToCart}
+          >
+            <AddShoppingCartIcon style={{ color: "#3a6ea5" }} />
+          </IconButton>
+        )}
 
         <ExpandMore
           expand={expanded}
