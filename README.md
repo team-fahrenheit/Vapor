@@ -3,6 +3,8 @@
 <a href='https://vapor.onrender.com/'>VAPOR</a> by <a href='https://github.com/EddieFahrenheit'>Edmund He</a>, <a href='https://github.com/Jasonp1992'>Jason Potvin</a>, and <a href='https://github.com/justintricate'>Justin Wooley</a>
 
 - Vapor is a video game ecommerce website that pulls all video games from the Best Buy API.
+- It is a SPA (Single Page Application) that follows REST (Representation State Transfer) protocol
+- Exemplifies functional programming, and allows for CRUD (Create Read Update Delete) operations 
 - Stack: PERN (Postgresql, Express, React, Node)
 - Node libraries featured: Redux, MUI (Material UI), JWT (JSON Web Tokens), Sequelize, Bcrypt
 
