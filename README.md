@@ -2,11 +2,13 @@
 
 VAPOR by Edmund He, Jason Potvin, and Justin Wooley
 
-Vapor is a video game ecommerce website that pulls all video games from the Best Buy API
+Vapor is a video game ecommerce website that pulls all video games from the Best Buy API.
+Stack: PERN (Postgresql, Express, React, Node)
+Node libraries featured: Redux, MUI (Material UI), JWT (JSON Web Tokens), Sequelize, Bcrypt
 
 ## Set Up Depencies and Database
-Run 'npm i' for all dependencies
-With postgresql installed, run 'createdb graceshopper'
+- Run `npm i` for all dependencies
+- With postgresql installed, run `createdb graceshopper`
 
 ## Start
 
