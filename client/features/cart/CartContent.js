@@ -2,24 +2,42 @@ import React from "react";
 import { Typography, Box, Button } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromCartThunk, getCartByIdThunk } from "../auth/authSlice";
+import {
+  removeFromCartThunk,
+  getCartByIdThunk,
+  guestRemove,
+} from "../auth/authSlice";
 
 const CartContent = (props) => {
   const dispatch = useDispatch();
   const currentUserId = useSelector((state) => state.auth.me.id);
+  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
 
   const deleteItemFromCart = () => {
-    dispatch(
-      removeFromCartThunk({
-        userId: currentUserId,
-        sku: props.item.sku,
-        platform: props.item.platform,
-        quantity: props.item.quantity,
-        albumTitle: props.item.albumTitle,
-        regularPrice: props.item.regularPrice,
-      })
-    );
-    dispatch(getCartByIdThunk({ userId: currentUserId }));
+    if (isLoggedIn) {
+      dispatch(
+        removeFromCartThunk({
+          userId: currentUserId,
+          sku: props.item.sku,
+          platform: props.item.platform,
+          quantity: props.item.quantity,
+          albumTitle: props.item.albumTitle,
+          regularPrice: props.item.regularPrice,
+        })
+      );
+      dispatch(getCartByIdThunk({ userId: currentUserId }));
+    } else {
+      dispatch(
+        guestRemove({
+          userId: currentUserId,
+          sku: props.item.sku,
+          platform: props.item.platform,
+          quantity: props.item.quantity,
+          albumTitle: props.item.albumTitle,
+          regularPrice: props.item.regularPrice,
+        })
+      );
+    }
   };
 
   return (
