@@ -14,6 +14,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Checkout from "../cart/Checkout";
 import AllProducts from "../allProducts/allProducts";
 import Infographic from "../AdminRoute/Infographic/Infographic";
+import WishList from "../wishlist/Wishlist";
 
 const theme = createTheme();
 
@@ -73,6 +74,7 @@ export default function MemberRoute() {
               <Route path="/AllProducts" element={<AllProducts />} />
               <Route path="/MyAccount" element={<Infographic />} />
               <Route path="/checkout" element={<Checkout />} />
+              <Route path="/wishlist" element={<WishList />} />
             </Routes>
             <Container sx={{ py: 8 }} maxWidth="md"></Container>
           </main>

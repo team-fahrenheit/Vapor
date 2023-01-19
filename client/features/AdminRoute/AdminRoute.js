@@ -15,6 +15,7 @@ import Checkout from "../cart/Checkout";
 import AllUsers from "./AllUsers";
 import AllProducts from "../allProducts/allProducts";
 import Infographic from "./Infographic/Infographic";
+import WishList from "../wishlist/Wishlist";
 
 const theme = createTheme();
 
@@ -81,6 +82,7 @@ export default function AdminRoute() {
               />
               <Route path="/AllProducts" element={<AllProducts />} />
               <Route path="/checkout" element={<Checkout />} />
+              <Route path="/wishlist" element={<WishList />} />
             </Routes>
             <Container sx={{ py: 8 }} maxWidth="md"></Container>
           </main>

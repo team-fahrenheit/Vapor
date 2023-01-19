@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { logout } from "../../app/store";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { Navigate, NavLink } from "react-router-dom";
 import LogInSignUp from "./LogInSignUp";
 import SearchBar from "./SearchBar";
 import { clearSearch } from "../../app/store";
@@ -113,7 +113,9 @@ const Navbar = () => {
                 }}
               >
                 <MenuItem onClick={closeAccountBtn}>My Account</MenuItem>
-                <MenuItem onClick={closeAccountBtn}>My Wishlist</MenuItem>
+                <LinkMui href="/wishlist">
+                  <MenuItem onClick={closeAccountBtn}>My Wishlist</MenuItem>
+                </LinkMui>
                 <MenuItem onClick={closeAccountBtn}>Settings</MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </Menu>

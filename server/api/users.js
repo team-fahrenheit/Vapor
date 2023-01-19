@@ -97,4 +97,52 @@ router.put("/cart/:userId/remove", async (req, res, next) => {
 //   }
 // });
 
+router.get("/wishlist/:userId", async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.params.userId, {
+      attributes: ["wishlist"],
+    });
+    res.status(200).send(user);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.put("/wishlist/:userId/add", async (req, res, next) => {
+  try {
+    const userList = await User.findByPk(req.params.userId, {
+      attributes: ["wishlist"],
+    });
+    if (userList.dataValues.wishlist === null) {
+      userList.dataValues.wishlist = [];
+    }
+    userList.dataValues.wishlist.push(req.body);
+    await User.update(
+      { wishlist: userList.dataValues.wishlist },
+      { where: { id: `${req.params.userId}` } }
+    );
+    res.status(202).send(userList);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.put("/wishlist/:userId/remove", async (req, res, next) => {
+  try {
+    const userList = await User.findByPk(req.params.userId, {
+      attributes: ["wishlist"],
+    });
+    const updatedList = userList.dataValues.wishlist.filter((item) => {
+      return item.sku != req.body.sku;
+    });
+    await User.update(
+      { wishlist: updatedList },
+      { where: { id: `${req.params.userId}` } }
+    );
+    res.status(202).send(userList);
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;

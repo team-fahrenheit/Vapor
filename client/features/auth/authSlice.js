@@ -108,6 +108,43 @@ export const removeFromCartThunk = createAsyncThunk(
   }
 );
 
+//wishlist thunks
+export const getWishlistByIdThunk = createAsyncThunk(
+  "wishlist/id",
+  async ({ userId }) => {
+    const { data } = await axios.get(`/api/users/wishlist/${userId}`);
+    return data;
+  }
+);
+
+export const addToWishlistThunk = createAsyncThunk(
+  "wishlist/add",
+  async ({ userId, sku, platform, quantity, albumTitle, regularPrice }) => {
+    const { data } = await axios.put(`/api/users/wishlist/${userId}/add`, {
+      sku,
+      platform,
+      quantity,
+      albumTitle,
+      regularPrice,
+    });
+    return data;
+  }
+);
+
+export const removeFromWishlistThunk = createAsyncThunk(
+  "wishlist/remove",
+  async ({ userId, sku, platform, quantity, albumTitle, regularPrice }) => {
+    const { data } = await axios.put(`/api/users/wishlist/${userId}/remove`, {
+      sku,
+      platform,
+      quantity,
+      albumTitle,
+      regularPrice,
+    });
+    return data;
+  }
+);
+
 /*
   SLICE
 */
@@ -120,7 +157,7 @@ export const authSlice = createSlice({
   reducers: {
     logout(state, action) {
       window.localStorage.removeItem(TOKEN);
-      state.me = { cart: [] };
+      state.me = { cart: [], wishlist: [] };
       state.error = null;
     },
   },
@@ -146,6 +183,16 @@ export const authSlice = createSlice({
     });
     builder.addCase(removeFromCartThunk.fulfilled, (state, action) => {
       state.me.cart = action.payload.cart;
+    });
+    //wishlist reducers
+    builder.addCase(getWishlistByIdThunk.fulfilled, (state, action) => {
+      state.me.wishlist = action.payload.wishlist;
+    });
+    builder.addCase(addToWishlistThunk.fulfilled, (state, action) => {
+      state.me.wishlist = action.payload.wishlist;
+    });
+    builder.addCase(removeFromWishlistThunk.fulfilled, (state, action) => {
+      state.me.wishlist = action.payload.wishlist;
     });
   },
 });
