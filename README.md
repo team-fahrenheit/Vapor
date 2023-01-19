@@ -16,6 +16,8 @@ LinkedIn:
 - Node libraries featured: Redux, MUI (Material UI), JWT (JSON Web Tokens), Sequelize, Bcrypt
 
 ## Set Up Depencies and Database
+- Obtain <a href='https://bestbuyapis.github.io/api-documentation/?javascript#getting-started'>Best Buy API keys</a> with non-gmail or .edu accounts
+- create your .env file with your secrets, namely JWT=`input`,key1=`input`,key2=`input`, key3=`input`
 - Run `npm i` for all dependencies
 - With postgresql installed, run `createdb graceshopper`
 
