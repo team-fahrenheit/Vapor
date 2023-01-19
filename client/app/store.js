@@ -3,7 +3,7 @@ import logger from "redux-logger";
 import allUsersSlice from "../features/AdminRoute/allUsersSlice";
 import allProductsSlice from "../features/allProducts/allProductsSlice";
 import authReducer from "../features/auth/authSlice";
-import searchBarSlice from "../features/navbar/searchBarSlice";
+import searchBarSlice from "../features/navbar/SearchBarSlice";
 
 const store = configureStore({
   reducer: {
@@ -17,4 +17,4 @@ const store = configureStore({
 
 export default store;
 export * from "../features/auth/authSlice";
-export * from "../features/navbar/searchBarSlice";
+export * from "../features/navbar/SearchBarSlice";
