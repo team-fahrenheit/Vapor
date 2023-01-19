@@ -1,6 +1,7 @@
 <img width="1584" alt="Screenshot 2023-01-18 at 8 55 11 PM" src="https://user-images.githubusercontent.com/114819096/213337309-421203f5-b2f7-4037-97a2-83032ecda306.png">
 
-<a href='https://vapor.onrender.com/'>VAPOR</a> by <a href='https://github.com/EddieFahrenheit'>Edmund He</a>, <a href='https://github.com/Jasonp1992'>Jason Potvin</a>, and <a href='https://github.com/justintricate'>Justin Wooley</a>
+<a href='https://vapor.onrender.com/'>## VAPOR</a>
+                -by <a href='https://github.com/EddieFahrenheit'>Edmund He</a>, <a href='https://github.com/Jasonp1992'>Jason Potvin</a>, and <a href='https://github.com/justintricate'>Justin Wooley</a>
 
 - Vapor is a video game ecommerce website that pulls all video games from the Best Buy API.
 - It is a SPA (Single Page Application) that follows REST (Representation State Transfer) protocol
