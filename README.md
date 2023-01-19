@@ -3,8 +3,10 @@
 ## <a href='https://vapor.onrender.com/'>VAPOR</a>
 <p>     by <a href='https://github.com/EddieFahrenheit'>Edmund He</a>, <a href='https://github.com/Jasonp1992'>Jason Potvin</a>, and <a href='https://github.com/justintricate'>Justin Wooley</a> </p>
 
-LinkedIn
-<a href='https://www.linkedin.com/in/eddiefahrenheit/'>Edmund He</a>
+LinkedIn:
+<a href='https://www.linkedin.com/in/eddiefahrenheit/'>Edmund He</a> | 
+<a href='https://www.linkedin.com/in/jason-potvin/'>Jason Potvin</a> | 
+<a href='https://www.linkedin.com/in/justin-wooley//'>Justin Wooley</a>
 
 - Vapor is a video game ecommerce website that pulls all video games from the Best Buy API.
 - It is a SPA (Single Page Application) that follows REST (Representation State Transfer) protocol
@@ -24,3 +26,4 @@ Sync and seed your database by running `npm run seed`. Running `npm run start:de
 - start:dev will both start your server and build your client side files using webpack
 - start:dev:logger is the same as start:dev, but you will see your SQL queries (can be helpful for debugging)
 - start:dev:seed will start your server and also seed your database (this is useful when you are making schema changes and you don't want to run your seed script separately)
+- Windows users should run 'npm run build:dev' & 'npm run start' in separate terminals for full functionality 
