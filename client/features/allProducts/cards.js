@@ -16,7 +16,11 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { v4 as uuidv4 } from "uuid";
-import { addToCartThunk, addToWishlistThunk } from "../auth/authSlice";
+import {
+  addToCartThunk,
+  addToWishlistThunk,
+  guestAdd,
+} from "../auth/authSlice";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -33,7 +37,7 @@ export default function RecipeReviewCard(props) {
   const [expanded, setExpanded] = useState(false);
   const [addCartDisabled, setAddCartDisabled] = useState(false);
   const [addWishlistDisabled, setAddWishlistDisabled] = useState(false);
-
+  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const currentUserId = useSelector((state) => state.auth.me.id);
   const dispatch = useDispatch();
 
@@ -43,16 +47,28 @@ export default function RecipeReviewCard(props) {
 
   const handleAddToCart = (e) => {
     e.preventDefault();
-    dispatch(
-      addToCartThunk({
-        userId: currentUserId,
-        sku: props.product.sku,
-        platform: props.product.platform,
-        quantity: 1,
-        albumTitle: props.product.albumTitle,
-        regularPrice: props.product.regularPrice,
-      };
-      state.auth.me.cart.push(item);
+    if (isLoggedIn) {
+      dispatch(
+        addToCartThunk({
+          userId: currentUserId,
+          sku: props.product.sku,
+          platform: props.product.platform,
+          quantity: 1,
+          albumTitle: props.product.albumTitle,
+          regularPrice: props.product.regularPrice,
+        })
+      );
+    } else {
+      dispatch(
+        guestAdd({
+          userId: currentUserId,
+          sku: props.product.sku,
+          platform: props.product.platform,
+          quantity: 1,
+          albumTitle: props.product.albumTitle,
+          regularPrice: props.product.regularPrice,
+        })
+      );
     }
   };
 
