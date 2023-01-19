@@ -10,16 +10,15 @@ import {
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Paper from "@mui/material/Paper";
 import { useSelector } from "react-redux";
-import CartContent from "./CartContent";
 import { getAuth } from "../auth/authSlice";
+import CartContent from "./CartContent";
 
 let CartPreview = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const loggedInCart = useSelector(getAuth);
 
-  const userCart =
-    isLoggedIn && loggedInCart.me.cart ? loggedInCart.me.cart : [];
+  const userCart = loggedInCart.me.cart ? loggedInCart.me.cart : [];
 
   useEffect(() => {}, [userCart]);
 

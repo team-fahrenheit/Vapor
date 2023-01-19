@@ -160,6 +160,17 @@ export const authSlice = createSlice({
       state.me = { cart: [], wishlist: [] };
       state.error = null;
     },
+    guestAdd(state, action) {
+      if (!state.me.cart) {
+        state.me.cart = [];
+      }
+      state.me.cart.push(action.payload);
+    },
+    guestRemove(state, action) {
+      state.me.cart = state.me.cart.filter((item) => {
+        return item.sku != action.payload.sku;
+      });
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(me.fulfilled, (state, action) => {
@@ -200,7 +211,7 @@ export const authSlice = createSlice({
 /*
   ACTIONS
 */
-export const { logout } = authSlice.actions;
+export const { logout, guestAdd, guestRemove } = authSlice.actions;
 
 export const getAuth = (state) => {
   return state.auth;
