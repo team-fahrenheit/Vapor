@@ -47,6 +47,7 @@ export default function RecipeReviewCard(props) {
 
   const handleAddToCart = (e) => {
     e.preventDefault();
+    setAddCartDisabled(true);
     if (isLoggedIn) {
       dispatch(
         addToCartThunk({
