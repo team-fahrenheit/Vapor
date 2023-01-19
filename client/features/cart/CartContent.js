@@ -2,16 +2,13 @@ import React from "react";
 import { Typography, Box, Button } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromCartThunk } from "../auth/authSlice";
-import { getAuth } from "../auth/authSlice";
+import { removeFromCartThunk, getCartByIdThunk } from "../auth/authSlice";
 
 const CartContent = (props) => {
   const dispatch = useDispatch();
   const currentUserId = useSelector((state) => state.auth.me.id);
-  const loggedInCart = useSelector(getAuth);
 
-  const deleteItemFromCart = (e) => {
-    e.preventDefault();
+  const deleteItemFromCart = () => {
     dispatch(
       removeFromCartThunk({
         userId: currentUserId,
@@ -22,6 +19,7 @@ const CartContent = (props) => {
         regularPrice: props.item.regularPrice,
       })
     );
+    dispatch(getCartByIdThunk({ userId: currentUserId }));
   };
 
   return (
@@ -50,8 +48,8 @@ const CartContent = (props) => {
             <Button size="small" variant="contained">
               +
             </Button>
-            <Button onClick={deleteItemFromCart}>Remove</Button>
           </Box>
+          <Button onClick={deleteItemFromCart}>Remove</Button>
         </Box>
       </Box>
       <Divider variant="inset" />
