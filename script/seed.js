@@ -1,4 +1,5 @@
 "use strict";
+require("dotenv").config();
 
 const {
   db,
@@ -103,7 +104,6 @@ async function seed() {
   ]);
 
   console.log(`seeded ${users.length} users`);
-  console.log(`seeded successfully`);
   return {
     users: {
       cody: users[0],
