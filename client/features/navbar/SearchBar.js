@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FormControl, TextField } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { fetchAllProducts } from "../allProducts/allProductsSlice";
-import { updateSearch } from "./searchBarSlice";
+import { updateSearch } from "./SearchBarSlice";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
