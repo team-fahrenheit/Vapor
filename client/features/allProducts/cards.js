@@ -40,16 +40,28 @@ export default function RecipeReviewCard(props) {
 
   const handleAddToCart = (e) => {
     e.preventDefault();
-    dispatch(
-      addToCartThunk({
+    if (state.auth.me.id) {
+      dispatch(
+        addToCartThunk({
+          userId: currentUserId,
+          sku: props.product.sku,
+          platform: props.product.platform,
+          quantity: 1,
+          albumTitle: props.product.albumTitle,
+          regularPrice: props.product.regularPrice,
+        })
+      );
+    } else {
+      let item = {
         userId: currentUserId,
         sku: props.product.sku,
         platform: props.product.platform,
         quantity: 1,
         albumTitle: props.product.albumTitle,
         regularPrice: props.product.regularPrice,
-      })
-    );
+      };
+      state.auth.me.cart.push(item);
+    }
   };
 
   return (
