@@ -113,9 +113,9 @@ const Navbar = () => {
                 }}
               >
                 <MenuItem onClick={closeAccountBtn}>My Account</MenuItem>
-                <LinkMui href="/wishlist">
+                <NavLink to="/wishlist" style={{ color: "#000000" }}>
                   <MenuItem onClick={closeAccountBtn}>My Wishlist</MenuItem>
-                </LinkMui>
+                </NavLink>
                 <MenuItem onClick={closeAccountBtn}>Settings</MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </Menu>
