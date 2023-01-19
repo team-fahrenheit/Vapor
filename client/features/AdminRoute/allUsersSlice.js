@@ -4,7 +4,12 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const fetchAllUsers = createAsyncThunk("allUsers", async (userType) => {
   if (userType === "Admin") {
     try {
-      const { data } = await axios.get(`/api/users`);
+      const token = window.localStorage.getItem("token");
+      const { data } = await axios.get(`/api/users`, {
+        headers: {
+          authorization: token,
+        },
+      });
       return data;
     } catch (error) {
       console.error(error);

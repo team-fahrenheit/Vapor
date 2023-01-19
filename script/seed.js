@@ -101,6 +101,30 @@ async function seed() {
       userType: "Member",
       image: "/img/BruceSpringsteen.jpeg",
     }),
+    User.create({
+      firstName: "John",
+      lastName: "Cena",
+      email: "johncena@unseen.com",
+      password: "123",
+      userType: "Member",
+      image: "/img/johncena.png",
+    }),
+    User.create({
+      firstName: "Martin",
+      lastName: "Luther King",
+      email: "ihad@dream.com",
+      password: "123",
+      userType: "Member",
+      image: "/img/martinking.jpeg",
+    }),
+    User.create({
+      firstName: "Genghis",
+      lastName: "Khan",
+      email: "GenghisKhan@warlords.com",
+      password: "123",
+      userType: "Member",
+      image: "/img/genghiskhan.webp",
+    }),
   ]);
 
   console.log(`seeded ${users.length} users`);

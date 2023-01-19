@@ -4,12 +4,24 @@ const {
 } = require("../db");
 
 router.get("/", async (req, res, next) => {
-  const token = req.headers;
+  const token = req.headers.authorization;
   try {
-    const users = await User.findAll({
-      attributes: ["firstName", "lastName", "image", "id", "email", "userType"],
-    });
-    res.json(users);
+    const user = await User.findByToken(token);
+    if (user.userType === "Admin") {
+      const users = await User.findAll({
+        attributes: [
+          "firstName",
+          "lastName",
+          "image",
+          "id",
+          "email",
+          "userType",
+        ],
+      });
+      res.json(users);
+    } else {
+      res.sendStatus(404);
+    }
   } catch (err) {
     next(err);
   }
