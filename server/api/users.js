@@ -5,7 +5,6 @@ const {
 
 router.get("/", async (req, res, next) => {
   const token = req.headers;
-  console.log("start token------" + token + " --------end token ------");
   try {
     const users = await User.findAll({
       attributes: ["firstName", "lastName", "image", "id", "email", "userType"],
