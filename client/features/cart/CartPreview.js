@@ -28,7 +28,8 @@ let CartPreview = () => {
   );
 
   const cartTotal = userCart.reduce(
-    (accumulator, item) => accumulator + item.regularPrice * item.quantity,
+    (accumulator, item) =>
+      parseFloat(accumulator) + parseFloat(item.regularPrice) * item.quantity,
     0
   );
 
