@@ -1,6 +1,6 @@
 <img width="1584" alt="Screenshot 2023-01-18 at 8 55 11 PM" src="https://user-images.githubusercontent.com/114819096/213337309-421203f5-b2f7-4037-97a2-83032ecda306.png">
 
-VAPOR by Edmund He, Jason Potvin, and Justin Wooley
+VAPOR by <a href='https://github.com/EddieFahrenheit'>Edmund He</a>, Jason Potvin, and Justin Wooley
 
 Vapor is a video game ecommerce website that pulls all video games from the Best Buy API.
 Stack: PERN (Postgresql, Express, React, Node)
