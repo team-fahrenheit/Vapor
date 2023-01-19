@@ -1,39 +1,21 @@
-# FS-App-Template
+<img width="1584" alt="Screenshot 2023-01-18 at 8 55 11 PM" src="https://user-images.githubusercontent.com/114819096/213337309-421203f5-b2f7-4037-97a2-83032ecda306.png">
 
-## Setup
+## <a href='https://vapor.onrender.com/'>VAPOR</a>
+<p>     by <a href='https://github.com/EddieFahrenheit'>Edmund He</a>, <a href='https://github.com/Jasonp1992'>Jason Potvin</a>, and <a href='https://github.com/justintricate'>Justin Wooley</a> </p>
 
-To use this as boilerplate, you'll need to take the following steps:
+LinkedIn
+<a href='https://www.linkedin.com/in/eddiefahrenheit/'>Edmund He</a>
 
-- Don't fork or clone this repo! Instead, create a new, empty
-  directory on your machine and `git init` (or create an empty repo on
-  Github and clone it to your local machine)
+- Vapor is a video game ecommerce website that pulls all video games from the Best Buy API.
+- It is a SPA (Single Page Application) that follows REST (Representation State Transfer) protocol
+- Exemplifies functional programming, and allows for CRUD (Create Read Update Delete) operations
+- Implements user authentication and password encryption
+- Stack: PERN (Postgresql, Express, React, Node)
+- Node libraries featured: Redux, MUI (Material UI), JWT (JSON Web Tokens), Sequelize, Bcrypt
 
-- Now you will have to add the fs-app-template as a remote and merge it into your own repository.
-
-```
-git remote add boilermaker git@github.com:FullstackAcademy/fs-app-template-v2.git
-git fetch boilermaker
-git merge boilermaker/main
-git branch -m master main
-```
-
-## Customize
-
-Now that you've got the code, follow these steps to get acclimated:
-
-- Update project name and description in `package.json`
-- `npm install`
-- Create two postgres databases (`MY_APP_NAME` should match the `name`
-  parameter in `package.json`):
-- These commands will create both your **development** and **test** databases
-
-```
-createdb <YOUR APP NAME HERE FROM package.json>
-createdb <YOUR APP NAME HERE FROM package.json>-test
-```
-
-- By default, running `npm test` will use your test database, while
-  regular development uses development database
+## Set Up Depencies and Database
+- Run `npm i` for all dependencies
+- With postgresql installed, run `createdb graceshopper`
 
 ## Start
 

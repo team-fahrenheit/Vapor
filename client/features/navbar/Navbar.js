@@ -40,10 +40,8 @@ const Navbar = () => {
     <div id="back-to-top-anchor">
       <Box
         sx={{
-          mt: 1.5,
           p: 0.5,
           backgroundColor: "primary.main",
-          borderRadius: "5px",
           fontWeight: "medium",
           display: "flex",
           justifyContent: "space-between",
