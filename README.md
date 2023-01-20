@@ -2,6 +2,7 @@
 
 ## <a href='https://vapor.onrender.com/'>VAPOR</a>
 <p>     by <a href='https://github.com/EddieFahrenheit'>Edmund He</a>, <a href='https://github.com/Jasonp1992'>Jason Potvin</a>, and <a href='https://github.com/justintricate'>Justin Wooley</a> </p>
+<p> (Render shuts down after 15 min of inactivity. Please allow the page to load for a few seconds upon initially entering) </p>
 
 LinkedIn:
 <a href='https://www.linkedin.com/in/eddiefahrenheit/'>Edmund He</a> | 
